@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ScrollWheelView.h"
+#import "ICTableViewController.h"
 
-@interface ICViewController : UIViewController
+@interface ICViewController : UIViewController < ICTableViewControllerDelegate, ScrollWheelDelegate >
+
+@property (nonatomic, assign) IBOutlet ScrollWheelView *scrollWheel;
 
 @end
