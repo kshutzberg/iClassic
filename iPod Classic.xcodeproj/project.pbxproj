@@ -22,6 +22,7 @@
 		0A9154F2154F54B000513C69 /* Scroll Wheel.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A9154ED154F54B000513C69 /* Scroll Wheel.png */; };
 		0A9154F8154F55F000513C69 /* ScrollWheelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9154F7154F55F000513C69 /* ScrollWheelView.m */; };
 		0A9154FB154F567C00513C69 /* ICTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9154FA154F567C00513C69 /* ICTableViewController.m */; };
+		0A9154FE154F71A400513C69 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A9154FD154F71A400513C69 /* MediaPlayer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		0A9154F7154F55F000513C69 /* ScrollWheelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollWheelView.m; sourceTree = "<group>"; };
 		0A9154F9154F567C00513C69 /* ICTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICTableViewController.h; sourceTree = "<group>"; };
 		0A9154FA154F567C00513C69 /* ICTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICTableViewController.m; sourceTree = "<group>"; };
+		0A9154FD154F71A400513C69 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A9154FE154F71A400513C69 /* MediaPlayer.framework in Frameworks */,
 				0A9154CC154F544500513C69 /* UIKit.framework in Frameworks */,
 				0A9154CE154F544500513C69 /* Foundation.framework in Frameworks */,
 				0A9154D0154F544500513C69 /* CoreGraphics.framework in Frameworks */,
@@ -66,6 +69,7 @@
 		0A9154BC154F544500513C69 = {
 			isa = PBXGroup;
 			children = (
+				0A9154FD154F71A400513C69 /* MediaPlayer.framework */,
 				0A9154D1154F544500513C69 /* iPod Classic */,
 				0A9154CA154F544500513C69 /* Frameworks */,
 				0A9154C8154F544500513C69 /* Products */,
