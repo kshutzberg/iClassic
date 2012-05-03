@@ -60,9 +60,10 @@ static inline CGFloat getAngle(CGPoint startingPoint, CGPoint endingPoint)
     
     //NSLog(@"NOW: %f PREV: %f THETA: %f\n", thetaNow, thetaPrev, theta);
     
-    // Don't let theta exceed the maximum number of degreees
+    // Don't let theta exceed the maximum number of degrees
+    // Ignore touches outside of the hit test view
     
-    if(abs(theta) > MAX_DEGREES){
+    if(abs(theta) > MAX_DEGREES || ![self.view hitTest:[[touches anyObject] locationInView:self.view] withEvent:event]){
         return;
     }
     

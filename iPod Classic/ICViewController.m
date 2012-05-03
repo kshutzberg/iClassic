@@ -46,6 +46,7 @@
         [self.view insertSubview:tableViewController.tableView belowSubview:self.iPodView];
         
         self.tableView.showsVerticalScrollIndicator = NO;
+        self.tableView.userInteractionEnabled = NO;
         
         [_tableViewController removeFromParentViewController];
         _tableViewController.delegate = nil;
@@ -88,10 +89,12 @@
             [musicPlayer playbackState] == MPMusicPlaybackStatePlaying ? [musicPlayer pause] : [musicPlayer play];
             break;
         case ScrollWheelButtonLocationLeft:
-            [musicPlayer skipToPreviousItem];
+            (musicPlayer.currentPlaybackTime > 2) ? [musicPlayer skipToBeginning] : [musicPlayer skipToPreviousItem];
+            [musicPlayer play];
             break;
         case ScrollWheelButtonLocationRight:
             [musicPlayer skipToNextItem];
+            [musicPlayer play];
             break;
         case ScrollWheelButtonLocationCenter:
             [self.tableViewController selectCurrentRow];
