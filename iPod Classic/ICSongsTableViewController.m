@@ -7,9 +7,7 @@
 //
 
 #import "ICSongsTableViewController.h"
-
-
-#define TABLE_COLOR                     [UIColor colorWithWhite:0.95 alpha:1.0];
+#import "Colors.h"
 
 @implementation ICSongsTableViewController
 @synthesize songs = _songs;
@@ -69,6 +67,7 @@
     cell.detailTextLabel.text = [song valueForProperty:MPMediaItemPropertyArtist];
     
     cell.selectionStyle = UITableViewCellSelectionStyleGray;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     
     return cell;

@@ -9,6 +9,7 @@
 #import <MediaPlayer/MediaPlayer.h>
 
 #import "ICMediaTableViewController.h"
+#import "Colors.h"
 
 @interface ICMediaTableViewController ()
 
@@ -17,6 +18,12 @@
 @implementation ICMediaTableViewController
 
 #pragma mark - Table view delegate methods
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    cell.contentView.backgroundColor = TABLE_COLOR;
+    cell.accessoryView.backgroundColor = [UIColor clearColor];
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

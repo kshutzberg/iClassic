@@ -94,6 +94,9 @@
         case ScrollWheelButtonLocationRight:
             [musicPlayer skipToNextItem];
             break;
+        case ScrollWheelButtonLocationCenter:
+            [self.tableViewController selectCurrentRow];
+            break;
         default:
             break;
     }
@@ -103,63 +106,9 @@
 {
     //NSLog(@"Scroll wheel scrolled %f degrees.\n", degrees);
     
-#define UP          -1
-#define DOWN        1
-    
     int direction = (degrees > 0) ? 1 : -1;
     
-    NSIndexPath *currentIndexPath = [self.tableView indexPathForSelectedRow];
-    UITableViewCell *currentCell = [self.tableView cellForRowAtIndexPath:currentIndexPath];
-    NSArray *visibleCells = [self.tableView visibleCells];
-    
-    // Next will be the index path above or below, but it is not guarenteed to be within the bounds of the tableview
-    
-    NSIndexPath *next = [NSIndexPath indexPathForRow:currentIndexPath.row + direction inSection:currentIndexPath.section];
-    
-    // Case 1: selected cell is at the top
-    
-    if(currentCell == [visibleCells objectAtIndex:0])
-    {
-        // If we are moving up, select the cell above it, if there is one
-        
-        if (currentIndexPath.row > 0 && direction == UP){
-            [self.tableView selectRowAtIndexPath:next animated:NO scrollPosition:UITableViewScrollPositionTop];
-        }
-        
-        // If we are moving down, select the cell below, if there is one
-        else if([visibleCells count] > 1 && direction == DOWN){
-            [self.tableView selectRowAtIndexPath:next animated:NO scrollPosition:UITableViewScrollPositionNone];
-        }
-    }
-    
-    // Case 2: selected cell is at the bottom
-    
-    else if(currentCell == [visibleCells lastObject])
-    {
-        // If we are moving up, select the cell above it, if there is one
-        
-        if ([visibleCells count] > 1 && direction == UP){
-            [self.tableView selectRowAtIndexPath:next animated:NO scrollPosition:UITableViewScrollPositionNone];
-        }
-        
-        // If we are moving down, select the cell below, if there is one
-        else if(currentIndexPath.row < [self.tableView numberOfRowsInSection:0] - 1 && direction == DOWN){
-            [self.tableView selectRowAtIndexPath:next animated:NO scrollPosition:UITableViewScrollPositionBottom];
-        }
-    }
-    
-    // Case 3: we are in the middle of the screen
-    
-    else {
-        UITableViewScrollPosition position = UITableViewScrollPositionNone;
-        if([self.tableView cellForRowAtIndexPath:next] == [visibleCells objectAtIndex:0])
-            position = UITableViewScrollPositionTop;
-        if([self.tableView cellForRowAtIndexPath:next] == [visibleCells lastObject])
-            position = UITableViewScrollPositionBottom;
-        
-        [self.tableView selectRowAtIndexPath:next animated:NO scrollPosition:position];
-    }
-    
+    [self.tableViewController scrollDirection:direction];
 }
 
 #pragma mark - View controller life cycle

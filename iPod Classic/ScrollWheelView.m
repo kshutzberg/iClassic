@@ -56,6 +56,8 @@
     CGRect topSector        = CGRectMake(sectorXOffset, 0, sectorWidth, sectorHeight);
     CGRect bottomSector     = CGRectMake(sectorXOffset, height - sectorHeight, sectorWidth, sectorHeight);
     
+    CGRect middleCector     = CGRectMake(sectorXOffset, sectorYOffset, sectorWidth, sectorHeight);
+    
     
     
     if(![self.delegate respondsToSelector:@selector(scrollWheel:pressedButtonAtLocation:)])return;
@@ -73,6 +75,9 @@
     }
     if(CGRectContainsPoint(rightSector, location)){
         [self.delegate scrollWheel:self pressedButtonAtLocation:ScrollWheelButtonLocationRight];
+    }
+    if(CGRectContainsPoint(middleCector, location)){
+        [self.delegate scrollWheel:self pressedButtonAtLocation:ScrollWheelButtonLocationCenter];
     }
 }
 

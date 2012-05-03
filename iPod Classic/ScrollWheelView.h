@@ -14,7 +14,8 @@ typedef enum {
     ScrollWheelButtonLocationTop,
     ScrollWheelButtonLocationBottom,
     ScrollWheelButtonLocationLeft,
-    ScrollWheelButtonLocationRight
+    ScrollWheelButtonLocationRight,
+    ScrollWheelButtonLocationCenter
 } ScrollWheelButtonLocation;
 
 @protocol ScrollWheelDelegate <NSObject>
