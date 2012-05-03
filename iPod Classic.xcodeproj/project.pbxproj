@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A5C62D51552085C00E48AAA /* ICSongsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5C62D41552085C00E48AAA /* ICSongsTableViewController.m */; };
 		0A9154CC154F544500513C69 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A9154CB154F544500513C69 /* UIKit.framework */; };
 		0A9154CE154F544500513C69 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A9154CD154F544500513C69 /* Foundation.framework */; };
 		0A9154D0154F544500513C69 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A9154CF154F544500513C69 /* CoreGraphics.framework */; };
@@ -23,9 +24,13 @@
 		0A9154F8154F55F000513C69 /* ScrollWheelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9154F7154F55F000513C69 /* ScrollWheelView.m */; };
 		0A9154FB154F567C00513C69 /* ICTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9154FA154F567C00513C69 /* ICTableViewController.m */; };
 		0A9154FE154F71A400513C69 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A9154FD154F71A400513C69 /* MediaPlayer.framework */; };
+		0A915501154F720900513C69 /* ICMediaTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A915500154F720900513C69 /* ICMediaTableViewController.m */; };
+		ECE31CF1154F941000896711 /* Icon_iPhone_4.png in Resources */ = {isa = PBXBuildFile; fileRef = ECE31CF0154F941000896711 /* Icon_iPhone_4.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A5C62D31552085C00E48AAA /* ICSongsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICSongsTableViewController.h; sourceTree = "<group>"; };
+		0A5C62D41552085C00E48AAA /* ICSongsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICSongsTableViewController.m; sourceTree = "<group>"; };
 		0A9154C7154F544500513C69 /* iPod Classic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iPod Classic.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A9154CB154F544500513C69 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0A9154CD154F544500513C69 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -49,6 +54,9 @@
 		0A9154F9154F567C00513C69 /* ICTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICTableViewController.h; sourceTree = "<group>"; };
 		0A9154FA154F567C00513C69 /* ICTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICTableViewController.m; sourceTree = "<group>"; };
 		0A9154FD154F71A400513C69 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		0A9154FF154F720900513C69 /* ICMediaTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICMediaTableViewController.h; sourceTree = "<group>"; };
+		0A915500154F720900513C69 /* ICMediaTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICMediaTableViewController.m; sourceTree = "<group>"; };
+		ECE31CF0154F941000896711 /* Icon_iPhone_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon_iPhone_4.png; path = ../Icon_iPhone_4.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +77,6 @@
 		0A9154BC154F544500513C69 = {
 			isa = PBXGroup;
 			children = (
-				0A9154FD154F71A400513C69 /* MediaPlayer.framework */,
 				0A9154D1154F544500513C69 /* iPod Classic */,
 				0A9154CA154F544500513C69 /* Frameworks */,
 				0A9154C8154F544500513C69 /* Products */,
@@ -90,6 +97,7 @@
 				0A9154CB154F544500513C69 /* UIKit.framework */,
 				0A9154CD154F544500513C69 /* Foundation.framework */,
 				0A9154CF154F544500513C69 /* CoreGraphics.framework */,
+				0A9154FD154F71A400513C69 /* MediaPlayer.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -98,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				0A9154F5154F54D600513C69 /* Classes */,
+				ECE31CEF154F93DF00896711 /* icons */,
 				0A9154E8154F54B000513C69 /* iPod iPhone PNGs */,
 				0A9154D2154F544500513C69 /* Supporting Files */,
 			);
@@ -137,10 +146,22 @@
 				0A9154E1154F544500513C69 /* ICViewController.m */,
 				0A9154F9154F567C00513C69 /* ICTableViewController.h */,
 				0A9154FA154F567C00513C69 /* ICTableViewController.m */,
+				0A9154FF154F720900513C69 /* ICMediaTableViewController.h */,
+				0A915500154F720900513C69 /* ICMediaTableViewController.m */,
+				0A5C62D31552085C00E48AAA /* ICSongsTableViewController.h */,
+				0A5C62D41552085C00E48AAA /* ICSongsTableViewController.m */,
 				0A9154F6154F55F000513C69 /* ScrollWheelView.h */,
 				0A9154F7154F55F000513C69 /* ScrollWheelView.m */,
 			);
 			name = Classes;
+			sourceTree = "<group>";
+		};
+		ECE31CEF154F93DF00896711 /* icons */ = {
+			isa = PBXGroup;
+			children = (
+				ECE31CF0154F941000896711 /* Icon_iPhone_4.png */,
+			);
+			name = icons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,6 +223,7 @@
 				0A9154F0154F54B000513C69 /* iPod_Body.png in Resources */,
 				0A9154F1154F54B000513C69 /* iPod Body.png in Resources */,
 				0A9154F2154F54B000513C69 /* Scroll Wheel.png in Resources */,
+				ECE31CF1154F941000896711 /* Icon_iPhone_4.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,6 +239,8 @@
 				0A9154E2154F544500513C69 /* ICViewController.m in Sources */,
 				0A9154F8154F55F000513C69 /* ScrollWheelView.m in Sources */,
 				0A9154FB154F567C00513C69 /* ICTableViewController.m in Sources */,
+				0A915501154F720900513C69 /* ICMediaTableViewController.m in Sources */,
+				0A5C62D51552085C00E48AAA /* ICSongsTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,6 +352,7 @@
 				0A9154E7154F544500513C69 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

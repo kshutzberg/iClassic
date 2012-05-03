@@ -8,6 +8,7 @@
 
 #import "ICViewController.h"
 #import "ICTableViewController.h"
+#import "ICSongsTableViewController.h"
 
 
 @interface ICViewController ()
@@ -33,21 +34,22 @@
     {
         tableViewController.tableView.frame = self.tableView.frame;
         
-        _tableViewController.delegate = nil;
-        tableViewController.delegate = self;
-        
-        [_tableViewController removeFromParentViewController];
-        
-        _tableViewController = tableViewController;
-        
         [self addChildViewController:tableViewController];
+        
+        tableViewController.delegate = self;
         
         // Swap the table views
         
         [self.tableView removeFromSuperview];
         self.tableView = tableViewController.tableView;
-        [self.view addSubview:self.tableView];
+        [self.view addSubview:tableViewController.tableView];
         
+        
+        [_tableViewController removeFromParentViewController];
+        _tableViewController.delegate = nil;
+        
+        [_tableViewController release];
+        _tableViewController = [tableViewController retain];
     }
 }
 
@@ -55,8 +57,19 @@
 
 - (void)tableViewController:(ICTableViewController *)tableViewController didPickCellAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *identifier = [tableViewController.title isEqualToString:@"Settings"] ? @"mainTV" : @"settingsTV";
-    self.tableViewController = [self.storyboard instantiateViewControllerWithIdentifier:identifier];
+    NSString *identifier= nil;
+    
+    if([tableViewController.title isEqualToString:@"SongsTVC"]){
+        identifier = @"mainTV";
+        if(indexPath.row == 0)self.tableViewController = [[self.storyboard instantiateViewControllerWithIdentifier:identifier]autorelease];
+    }
+    else {
+        identifier = @"SongsTVC";
+        ICSongsTableViewController *songsTVC = [self.storyboard instantiateViewControllerWithIdentifier:identifier];
+        songsTVC.songs = [MPMediaQuery songsQuery];
+        self.tableViewController = songsTVC;
+        [songsTVC release];
+    }
 }
 
 #pragma mark - View controller life cycle
@@ -75,6 +88,8 @@
     
     // Replace the placeholder tableview with the real one
     [self installMainTableView];
+    
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleBlackOpaque;
 }
 
 - (void)viewDidUnload
