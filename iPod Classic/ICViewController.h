@@ -12,6 +12,7 @@
 
 @interface ICViewController : UIViewController < ICTableViewControllerDelegate, ScrollWheelDelegate >
 
-@property (nonatomic, assign) IBOutlet ScrollWheelView *scrollWheel;
+@property (assign, nonatomic) IBOutlet ScrollWheelView *scrollWheel;
+@property (retain, nonatomic) IBOutlet UIImageView *iPodView;
 
 @end

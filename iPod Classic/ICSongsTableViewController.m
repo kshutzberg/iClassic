@@ -8,6 +8,9 @@
 
 #import "ICSongsTableViewController.h"
 
+
+#define TABLE_COLOR                     [UIColor colorWithWhite:0.95 alpha:1.0];
+
 @implementation ICSongsTableViewController
 @synthesize songs = _songs;
 
@@ -21,6 +24,14 @@
         _songs = [songs retain];
         [self.tableView reloadData];
     }
+}
+
+#pragma mark - View life cycle
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.view.backgroundColor = TABLE_COLOR;
 }
 
 #pragma mark - Table view data source
@@ -50,10 +61,15 @@
     
     // Configure the cell...
     
+    cell.contentView.backgroundColor = TABLE_COLOR;
+    cell.textLabel.backgroundColor = [UIColor clearColor];
+    cell.detailTextLabel.backgroundColor = [UIColor clearColor];
+    
     cell.textLabel.text = [song valueForProperty:MPMediaItemPropertyTitle];
     cell.detailTextLabel.text = [song valueForProperty:MPMediaItemPropertyArtist];
     
     cell.selectionStyle = UITableViewCellSelectionStyleGray;
+    
     
     return cell;
 }

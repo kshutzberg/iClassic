@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0A5C62D51552085C00E48AAA /* ICSongsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5C62D41552085C00E48AAA /* ICSongsTableViewController.m */; };
+		0A5C62D915526B0900E48AAA /* ICWheelGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5C62D815526B0900E48AAA /* ICWheelGestureRecognizer.m */; };
 		0A9154CC154F544500513C69 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A9154CB154F544500513C69 /* UIKit.framework */; };
 		0A9154CE154F544500513C69 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A9154CD154F544500513C69 /* Foundation.framework */; };
 		0A9154D0154F544500513C69 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A9154CF154F544500513C69 /* CoreGraphics.framework */; };
@@ -31,6 +32,8 @@
 /* Begin PBXFileReference section */
 		0A5C62D31552085C00E48AAA /* ICSongsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICSongsTableViewController.h; sourceTree = "<group>"; };
 		0A5C62D41552085C00E48AAA /* ICSongsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICSongsTableViewController.m; sourceTree = "<group>"; };
+		0A5C62D715526B0900E48AAA /* ICWheelGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICWheelGestureRecognizer.h; sourceTree = "<group>"; };
+		0A5C62D815526B0900E48AAA /* ICWheelGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICWheelGestureRecognizer.m; sourceTree = "<group>"; };
 		0A9154C7154F544500513C69 /* iPod Classic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iPod Classic.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A9154CB154F544500513C69 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0A9154CD154F544500513C69 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -152,6 +155,8 @@
 				0A5C62D41552085C00E48AAA /* ICSongsTableViewController.m */,
 				0A9154F6154F55F000513C69 /* ScrollWheelView.h */,
 				0A9154F7154F55F000513C69 /* ScrollWheelView.m */,
+				0A5C62D715526B0900E48AAA /* ICWheelGestureRecognizer.h */,
+				0A5C62D815526B0900E48AAA /* ICWheelGestureRecognizer.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -241,6 +246,7 @@
 				0A9154FB154F567C00513C69 /* ICTableViewController.m in Sources */,
 				0A915501154F720900513C69 /* ICMediaTableViewController.m in Sources */,
 				0A5C62D51552085C00E48AAA /* ICSongsTableViewController.m in Sources */,
+				0A5C62D915526B0900E48AAA /* ICWheelGestureRecognizer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
