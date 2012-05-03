@@ -102,7 +102,7 @@
     if(shouldSelectNextCell){
         [self.tableView selectRowAtIndexPath:next animated:NO scrollPosition:position];
         UITableViewCell *nextCell = [self.tableView cellForRowAtIndexPath:next];
-        nextCell.contentView.backgroundColor = [UIColor lightGrayColor];
+        nextCell.contentView.backgroundColor = TABLE_COLOR_SELECTED;
         currentCell.contentView.backgroundColor = TABLE_COLOR;
     }
 }
@@ -132,6 +132,18 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+}
+
+
+// Automatically select the first cell when the view appears
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if([[self.tableView visibleCells] count]){
+        UITableViewCell *topCell = [self.tableView.visibleCells objectAtIndex:0];
+        [self.tableView selectRowAtIndexPath:[self.tableView indexPathForCell:topCell] animated:NO scrollPosition:UITableViewRowAnimationTop];
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -222,6 +234,15 @@
     }
     
 
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    cell.contentView.backgroundColor = TABLE_COLOR;
+    
+    cell.accessoryView.backgroundColor = [UIColor clearColor];
+    cell.textLabel.backgroundColor = [UIColor clearColor];
+    cell.detailTextLabel.backgroundColor = [UIColor clearColor];
 }
 
 @end

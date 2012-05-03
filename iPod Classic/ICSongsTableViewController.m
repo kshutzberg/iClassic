@@ -32,6 +32,16 @@
     self.view.backgroundColor = TABLE_COLOR;
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if([[self.tableView visibleCells] count]){
+        UITableViewCell *topCell = [self.tableView.visibleCells objectAtIndex:0];
+        topCell.contentView.backgroundColor = TABLE_COLOR_SELECTED;
+    }
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -58,10 +68,6 @@
     MPMediaItem *song = [[self.songs items] objectAtIndex:indexPath.row];
     
     // Configure the cell...
-    
-    cell.contentView.backgroundColor = TABLE_COLOR;
-    cell.textLabel.backgroundColor = [UIColor clearColor];
-    cell.detailTextLabel.backgroundColor = [UIColor clearColor];
     
     cell.textLabel.text = [song valueForProperty:MPMediaItemPropertyTitle];
     cell.detailTextLabel.text = [song valueForProperty:MPMediaItemPropertyArtist];

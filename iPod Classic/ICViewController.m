@@ -47,7 +47,6 @@
         
         self.tableView.showsVerticalScrollIndicator = NO;
         
-        
         [_tableViewController removeFromParentViewController];
         _tableViewController.delegate = nil;
         
