@@ -43,8 +43,8 @@
         tableViewController.delegate = self;
         
         // push the tableViewController on screen
-        if([self.navigationController.viewControllers containsObject:tableViewController]){
-            [self.navigationController popToViewController:tableViewController animated:YES];
+        if([self.screenNavigationController.viewControllers containsObject:tableViewController]){
+            [self.screenNavigationController popToViewController:tableViewController animated:YES];
         }
         else if(tableViewController){
             [self.screenNavigationController pushViewController:tableViewController animated:YES];
