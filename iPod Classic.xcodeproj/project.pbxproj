@@ -110,8 +110,6 @@
 				0A9154E1154F544500513C69 /* ICViewController.m */,
 				0A9154F9154F567C00513C69 /* ICTableViewController.h */,
 				0A9154FA154F567C00513C69 /* ICTableViewController.m */,
-				0A9154FF154F720900513C69 /* ICMediaTableViewController.h */,
-				0A915500154F720900513C69 /* ICMediaTableViewController.m */,
 				0A5C62D31552085C00E48AAA /* ICSongsTableViewController.h */,
 				0A5C62D41552085C00E48AAA /* ICSongsTableViewController.m */,
 				0A0CB3FF1554D8DE009D5924 /* ICNowPlayingViewController.h */,
@@ -163,6 +161,8 @@
 		0A9154D2154F544500513C69 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0A9154FF154F720900513C69 /* ICMediaTableViewController.h */,
+				0A915500154F720900513C69 /* ICMediaTableViewController.m */,
 				0A9154D3154F544500513C69 /* iPod Classic-Info.plist */,
 				0A9154D4154F544500513C69 /* InfoPlist.strings */,
 				0A9154D7154F544500513C69 /* main.m */,
