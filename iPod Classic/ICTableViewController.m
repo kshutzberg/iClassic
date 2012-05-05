@@ -87,7 +87,7 @@
     }
     
     // Case 3: we are in the middle of the screen
-    
+
     else {
         //UITableViewScrollPosition position = UITableViewScrollPositionNone;
         if([self.tableView cellForRowAtIndexPath:next] == [visibleCells objectAtIndex:0])
