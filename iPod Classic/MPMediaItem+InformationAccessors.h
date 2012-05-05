@@ -10,4 +10,9 @@
 
 @interface MPMediaItem (InformationAccessors)
 
+// Instead of calling valueForProperty throughout the app, lets make a category to encapsulate these with convinience methods and get type checking.
+
+- (NSString *)songTitle;
+- (NSString *)artistName;
+
 @end
