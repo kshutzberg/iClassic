@@ -2,17 +2,21 @@
 //  ICViewController.h
 //  iPod Classic
 //
-//  Created by Julian Shutzberg on 4/30/12.
+//  Created by Julian Shutzberg on 5/4/12.
 //  Copyright (c) 2012 Stanford University. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
+
 #import "ScrollWheelView.h"
-#import "ICTableViewController.h"
 
-@interface ICViewController : UIViewController < ICTableViewControllerDelegate, ScrollWheelDelegate >
+/*!
+ @class     ICViewController
+ 
+ @abstract  A view controller that provides the basic functionality for display on the iPod screen
+ */
 
-@property (assign, nonatomic) IBOutlet ScrollWheelView *scrollWheel;
-@property (retain, nonatomic) IBOutlet UIImageView *iPodView;
+@interface ICViewController : UIViewController < ScrollWheelDelegate >
+
 
 @end

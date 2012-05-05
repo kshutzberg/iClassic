@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "ScreenViewController.h"
+
 @class ICTableViewController;
 
 @protocol ICTableViewControllerDelegate <NSObject>
@@ -18,7 +20,7 @@
 
 @end
 
-@interface ICTableViewController : UITableViewController
+@interface ICTableViewController : UITableViewController < ICScreenViewController >
 
 @property (nonatomic, assign) id < ICTableViewControllerDelegate > delegate;
 

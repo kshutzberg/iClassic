@@ -6,11 +6,11 @@
 //  Copyright (c) 2012 Stanford University. All rights reserved.
 //
 
-#import "ScrollWheelView.h"
+#import "ICScrollWheelView.h"
 #import "ICWheelGestureRecognizer.h"
 
 
-@implementation ScrollWheelView
+@implementation ICScrollWheelView
 @synthesize delegate = _delegate;
 @synthesize rotationTriggerSize = _rotationTriggerSize;
 
@@ -65,19 +65,19 @@
     // Handle the touch
     
     if(CGRectContainsPoint(topSector, location)){
-        [self.delegate scrollWheel:self pressedButtonAtLocation:ScrollWheelButtonLocationTop];
+        [self.delegate scrollWheel:self pressedButtonAtLocation:ICScrollWheelButtonLocationTop];
     }
     if(CGRectContainsPoint(bottomSector, location)){
-        [self.delegate scrollWheel:self pressedButtonAtLocation:ScrollWheelButtonLocationBottom];
+        [self.delegate scrollWheel:self pressedButtonAtLocation:ICScrollWheelButtonLocationBottom];
     }
     if(CGRectContainsPoint(leftSector, location)){
-        [self.delegate scrollWheel:self pressedButtonAtLocation:ScrollWheelButtonLocationLeft];
+        [self.delegate scrollWheel:self pressedButtonAtLocation:ICScrollWheelButtonLocationLeft];
     }
     if(CGRectContainsPoint(rightSector, location)){
-        [self.delegate scrollWheel:self pressedButtonAtLocation:ScrollWheelButtonLocationRight];
+        [self.delegate scrollWheel:self pressedButtonAtLocation:ICScrollWheelButtonLocationRight];
     }
     if(CGRectContainsPoint(middleCector, location)){
-        [self.delegate scrollWheel:self pressedButtonAtLocation:ScrollWheelButtonLocationCenter];
+        [self.delegate scrollWheel:self pressedButtonAtLocation:ICScrollWheelButtonLocationCenter];
     }
 }
 
