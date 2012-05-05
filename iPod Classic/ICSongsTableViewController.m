@@ -20,6 +20,9 @@
     {
         [_songs release];
         _songs = [songs retain];
+        
+        [[MPMusicPlayerController iPodMusicPlayer] setQueueWithQuery:songs];
+        
         [self.tableView reloadData];
     }
 }
