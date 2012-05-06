@@ -10,6 +10,12 @@
 
 #import "ICScrollWheelView.h"
 
+/*!
+ @protocol  ICScreenViewController
+ 
+ @abstract  A protocol for a view controller on the iPod screen that will dictate the methods to be used to handle user input from the container ICIPodViewController user interface (i.e. the click wheel).
+ */
+
 @protocol ICScreenViewController < NSObject, ICScrollWheelDelegate >
 
 @end

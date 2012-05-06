@@ -10,6 +10,11 @@
 #import "ICScrollWheelView.h"
 #import "ICTableViewController.h"
 
+/*! @class      ICIPodViewController
+ 
+    @abstract   A container view controller for the iPod app.
+ */
+
 @interface ICIPodViewController : UIViewController < ICTableViewControllerDelegate, ICScrollWheelDelegate >
 
 @property (assign, nonatomic) IBOutlet ICScrollWheelView *scrollWheel;

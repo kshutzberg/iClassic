@@ -9,6 +9,10 @@
 #import "ICTableViewController.h"
 #import "Colors.h"
 
+#import <MediaPlayer/MediaPlayer.h>
+
+#import "ICSongsTableViewController.h"
+
 @interface ICTableViewController ()
 
 @end
@@ -21,11 +25,47 @@
     [self tableView:self.tableView didSelectRowAtIndexPath:self.tableView.indexPathForSelectedRow];
 }
 
-- (void)scrollDirection:(int)direction
+#pragma mark - Screen View Controller Protocol
+
+#pragma mark Scroll wheel delegate
+
+- (void)scrollWheel:(ICScrollWheelView *)scrollWheel pressedButtonAtLocation:(ICScrollWheelButtonLocation)location
 {
+    MPMusicPlayerController *musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
     
-#define UP          -1
-#define DOWN        1
+    switch (location) {
+        case ICScrollWheelButtonLocationTop:
+            //self.tableViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"mainTV"];
+            if([self.navigationController.viewControllers count] > 1){
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+            break;
+        case ICScrollWheelButtonLocationBottom:
+            [musicPlayer playbackState] == MPMusicPlaybackStatePlaying ? [musicPlayer pause] : [musicPlayer play];
+            break;
+        case ICScrollWheelButtonLocationLeft:
+            (musicPlayer.currentPlaybackTime > 2) ? [musicPlayer skipToBeginning] : [musicPlayer skipToPreviousItem];
+            [musicPlayer play];
+            break;
+        case ICScrollWheelButtonLocationRight:
+            [musicPlayer skipToNextItem];
+            [musicPlayer play];
+            break;
+        case ICScrollWheelButtonLocationCenter:
+            [self selectCurrentRow];
+            break;
+        default:
+            break;
+    }
+}
+
+
+- (void)scrollWheel:(ICScrollWheelView *)scrollWheel didRotate:(CGFloat)degrees
+{
+    int up  = -1;
+    int down = 1;
+    
+    int direction = (degrees > 0) ? 1 : -1;
     
     NSIndexPath *currentIndexPath = [self.tableView indexPathForSelectedRow];
     UITableViewCell *currentCell = [self.tableView cellForRowAtIndexPath:currentIndexPath];
@@ -52,14 +92,14 @@
     {
         // If we are moving up, select the cell above it, if there is one
         
-        if (currentIndexPath.row > 0 && direction == UP){
+        if (currentIndexPath.row > 0 && direction == up){
             //[self.tableView selectRowAtIndexPath:next animated:NO scrollPosition:UITableViewScrollPositionTop];
             position = UITableViewScrollPositionTop;
             shouldSelectNextCell = YES;
         }
         
         // If we are moving down, select the cell below, if there is one
-        else if([visibleCells count] > 1 && direction == DOWN){
+        else if([visibleCells count] > 1 && direction == down){
             //[self.tableView selectRowAtIndexPath:next animated:NO scrollPosition:UITableViewScrollPositionNone];
             position = UITableViewScrollPositionNone;
             shouldSelectNextCell = YES;
@@ -72,14 +112,14 @@
     {
         // If we are moving up, select the cell above it, if there is one
         
-        if ([visibleCells count] > 1 && direction == UP){
+        if ([visibleCells count] > 1 && direction == up){
             //[self.tableView selectRowAtIndexPath:next animated:NO scrollPosition:UITableViewScrollPositionNone];
             position = UITableViewScrollPositionNone;
             shouldSelectNextCell = YES;
         }
         
         // If we are moving down, select the cell below, if there is one
-        else if(currentIndexPath.row < [self.tableView numberOfRowsInSection:0] - 1 && direction == DOWN){
+        else if(currentIndexPath.row < [self.tableView numberOfRowsInSection:0] - 1 && direction == down){
             //[self.tableView selectRowAtIndexPath:next animated:NO scrollPosition:UITableViewScrollPositionBottom];
             position = UITableViewScrollPositionBottom;
             shouldSelectNextCell = YES;
@@ -235,15 +275,18 @@
      [detailViewController release];
      */
     
-    if([self.delegate respondsToSelector:@selector(tableViewController:didPickCellAtIndexPath:)]){
-        [self.delegate tableViewController:self didPickCellAtIndexPath:indexPath];
-    }
+    ICSongsTableViewController *songsTVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SongsTVC"];
+    songsTVC.songs = [MPMediaQuery songsQuery];
     
+    [self.navigationController pushViewController:songsTVC animated:YES];
 
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+#warning This needs to be moved into ICTableView.h
+    
     cell.contentView.backgroundColor = TABLE_COLOR;
     cell.backgroundColor = TABLE_COLOR;
     

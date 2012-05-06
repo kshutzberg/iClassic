@@ -24,8 +24,4 @@
 
 @property (nonatomic, assign) id < ICTableViewControllerDelegate > delegate;
 
-- (void)selectCurrentRow;   // This method is called when the user taps the click wheel.  Default implementation does nothing
-
-- (void)scrollDirection:(int)direction; // Moves selects the next cell moving up if direction is -1 and the next cell moving down if it is positive 1
-
 @end
