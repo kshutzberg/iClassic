@@ -38,11 +38,6 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-    if([[self.tableView visibleCells] count]){
-        UITableViewCell *topCell = [self.tableView.visibleCells objectAtIndex:0];
-        topCell.contentView.backgroundColor = TABLE_COLOR_SELECTED;
-    }
 }
 
 #pragma mark - Table view data source
@@ -74,10 +69,6 @@
     
     cell.textLabel.text = [song valueForProperty:MPMediaItemPropertyTitle];
     cell.detailTextLabel.text = [song valueForProperty:MPMediaItemPropertyArtist];
-    
-    cell.selectionStyle = UITableViewCellSelectionStyleGray;
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
     
     return cell;
 }

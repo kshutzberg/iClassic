@@ -11,8 +11,6 @@
 
 #import <MediaPlayer/MediaPlayer.h>
 
-#import "ICSongsTableViewController.h"
-
 @interface ICTableViewController ()
 
 @end
@@ -75,12 +73,6 @@
     
     NSIndexPath *next = [NSIndexPath indexPathForRow:currentIndexPath.row + direction inSection:currentIndexPath.section];
     
-    // If we are going to eventually select the next cell, go ahead and deselect this one
-    
-    if([self.tableView cellForRowAtIndexPath:next]){
-        [self.tableView deselectRowAtIndexPath:currentIndexPath animated:NO];
-    }
-    
     ///////////////////////////////////////
     
     UITableViewScrollPosition position = UITableViewScrollPositionNone;
@@ -140,14 +132,17 @@
     }
     
     if(shouldSelectNextCell){
+        // If we are going to eventually select the next cell, go ahead and deselect this one
+        
+        [self.tableView deselectRowAtIndexPath:currentIndexPath animated:NO];
         [self.tableView selectRowAtIndexPath:next animated:NO scrollPosition:position];
-        UITableViewCell *nextCell = [self.tableView cellForRowAtIndexPath:next];
-        
-        nextCell.contentView.backgroundColor = TABLE_COLOR_SELECTED;
-        nextCell.backgroundColor = TABLE_COLOR_SELECTED;
-        
-        currentCell.contentView.backgroundColor = TABLE_COLOR;
-        currentCell.backgroundColor = TABLE_COLOR;
+//        UITableViewCell *nextCell = [self.tableView cellForRowAtIndexPath:next];
+//        
+//        nextCell.contentView.backgroundColor = TABLE_COLOR_SELECTED;
+//        nextCell.backgroundColor = TABLE_COLOR_SELECTED;
+//        
+//        currentCell.contentView.backgroundColor = TABLE_COLOR;
+//        currentCell.backgroundColor = TABLE_COLOR;
     }
 }
 
@@ -165,7 +160,7 @@
     [super viewDidLoad];
 
     // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
@@ -184,11 +179,12 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    if([[self.tableView visibleCells] count]){
+    
+    // Make sure at least one cell is highlighted
+    
+    if(![self.tableView indexPathForSelectedRow] && ![[self.tableView indexPathsForSelectedRows] count] && [[self.tableView visibleCells] count]){
         UITableViewCell *topCell = [self.tableView.visibleCells objectAtIndex:0];
         [self.tableView selectRowAtIndexPath:[self.tableView indexPathForCell:topCell] animated:NO scrollPosition:UITableViewRowAnimationTop];
-        topCell.contentView.backgroundColor = TABLE_COLOR_SELECTED;
-        topCell.backgroundColor = TABLE_COLOR_SELECTED;
     }
 }
 
@@ -266,33 +262,23 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
-    
-    ICSongsTableViewController *songsTVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SongsTVC"];
-    songsTVC.songs = [MPMediaQuery songsQuery];
-    
-    [self.navigationController pushViewController:songsTVC animated:YES];
+
 
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
+{ 
+    bool isSelected = [indexPath isEqual:[tableView indexPathForSelectedRow]];
     
-#warning This needs to be moved into ICTableView.h
-    
-    cell.contentView.backgroundColor = TABLE_COLOR;
-    cell.backgroundColor = TABLE_COLOR;
+    cell.contentView.backgroundColor = isSelected ? TABLE_COLOR_SELECTED : TABLE_COLOR;
+    cell.backgroundColor = cell.contentView.backgroundColor;
     
     cell.accessoryView.backgroundColor = [UIColor clearColor];
     cell.textLabel.backgroundColor = [UIColor clearColor];
     cell.detailTextLabel.backgroundColor = [UIColor clearColor];
+    
+    
+    cell.selectedBackgroundView.backgroundColor = TABLE_COLOR_SELECTED;
 }
 
 @end

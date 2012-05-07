@@ -9,7 +9,7 @@
 #ifndef iPod_Classic_Colors_h
 #define iPod_Classic_Colors_h
 
-#define TABLE_COLOR                     [UIColor colorWithWhite:0.95 alpha:1.0];
-#define TABLE_COLOR_SELECTED            [UIColor lightGrayColor];
+#define TABLE_COLOR                     [UIColor colorWithWhite:0.95 alpha:1.0]
+#define TABLE_COLOR_SELECTED            [UIColor lightGrayColor]
 
 #endif

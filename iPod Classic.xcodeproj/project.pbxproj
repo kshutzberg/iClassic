@@ -14,6 +14,7 @@
 		0A0CB4051554ECE4009D5924 /* ICNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A0CB4041554ECE4009D5924 /* ICNavigationController.m */; };
 		0A0CB40C15559B5D009D5924 /* ICPlaylistsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A0CB40B15559B5C009D5924 /* ICPlaylistsTableViewController.m */; };
 		0A0CB40F15559B78009D5924 /* ICArtistsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A0CB40E15559B77009D5924 /* ICArtistsTableViewController.m */; };
+		0A0CB412155741B7009D5924 /* ICMainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A0CB411155741B7009D5924 /* ICMainTableViewController.m */; };
 		0A5C62D51552085C00E48AAA /* ICSongsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5C62D41552085C00E48AAA /* ICSongsTableViewController.m */; };
 		0A5C62D915526B0900E48AAA /* ICWheelGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5C62D815526B0900E48AAA /* ICWheelGestureRecognizer.m */; };
 		0A9154CC154F544500513C69 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A9154CB154F544500513C69 /* UIKit.framework */; };
@@ -53,6 +54,8 @@
 		0A0CB40B15559B5C009D5924 /* ICPlaylistsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICPlaylistsTableViewController.m; sourceTree = "<group>"; };
 		0A0CB40D15559B77009D5924 /* ICArtistsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICArtistsTableViewController.h; sourceTree = "<group>"; };
 		0A0CB40E15559B77009D5924 /* ICArtistsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICArtistsTableViewController.m; sourceTree = "<group>"; };
+		0A0CB410155741B6009D5924 /* ICMainTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ICMainTableViewController.h; path = ../ICMainTableViewController.h; sourceTree = "<group>"; };
+		0A0CB411155741B7009D5924 /* ICMainTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ICMainTableViewController.m; path = ../ICMainTableViewController.m; sourceTree = "<group>"; };
 		0A5C62D31552085C00E48AAA /* ICSongsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICSongsTableViewController.h; sourceTree = "<group>"; };
 		0A5C62D41552085C00E48AAA /* ICSongsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICSongsTableViewController.m; sourceTree = "<group>"; };
 		0A5C62D715526B0900E48AAA /* ICWheelGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICWheelGestureRecognizer.h; sourceTree = "<group>"; };
@@ -123,6 +126,8 @@
 				0A0CB4041554ECE4009D5924 /* ICNavigationController.m */,
 				0A9154F9154F567C00513C69 /* ICTableViewController.h */,
 				0A9154FA154F567C00513C69 /* ICTableViewController.m */,
+				0A0CB410155741B6009D5924 /* ICMainTableViewController.h */,
+				0A0CB411155741B7009D5924 /* ICMainTableViewController.m */,
 				0A0CB40A15559B5B009D5924 /* ICPlaylistsTableViewController.h */,
 				0A0CB40B15559B5C009D5924 /* ICPlaylistsTableViewController.m */,
 				0A0CB40D15559B77009D5924 /* ICArtistsTableViewController.h */,
@@ -309,6 +314,7 @@
 				0A0CB4051554ECE4009D5924 /* ICNavigationController.m in Sources */,
 				0A0CB40C15559B5D009D5924 /* ICPlaylistsTableViewController.m in Sources */,
 				0A0CB40F15559B78009D5924 /* ICArtistsTableViewController.m in Sources */,
+				0A0CB412155741B7009D5924 /* ICMainTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
