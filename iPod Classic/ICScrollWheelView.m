@@ -43,8 +43,8 @@
     
     // Change these two values to adjust the sector size
     
-    CGFloat sectorWidth = width / 5;
-    CGFloat sectorHeight = height / 5;
+    CGFloat sectorWidth = width / 3.5;
+    CGFloat sectorHeight = height / 3.5;
     
     // Use these two values for the position to center horizontally/vertically
     
