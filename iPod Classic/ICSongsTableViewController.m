@@ -27,18 +27,6 @@
     }
 }
 
-#pragma mark - View life cycle
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    self.view.backgroundColor = TABLE_COLOR;
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-}
 
 #pragma mark - Table view data source
 
@@ -80,6 +68,14 @@
     MPMediaItem *song = [[self.songs items] objectAtIndex:indexPath.row];
     [[MPMusicPlayerController iPodMusicPlayer] setNowPlayingItem:song];
     [[MPMusicPlayerController iPodMusicPlayer] play];
+}
+
+#pragma mark - Memory Management
+
+- (void)dealloc
+{
+    self.songs = nil;
+    [super dealloc];
 }
 
 @end

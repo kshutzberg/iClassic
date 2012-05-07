@@ -8,6 +8,10 @@
 
 #import "ICTableViewController.h"
 
+#import <MediaPlayer/MediaPlayer.h>
+
 @interface ICArtistsTableViewController : ICTableViewController
+
+@property (nonatomic, retain) MPMediaQuery *artists;
 
 @end

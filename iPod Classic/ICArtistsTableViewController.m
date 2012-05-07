@@ -8,6 +8,16 @@
 
 #import "ICArtistsTableViewController.h"
 
+
 @implementation ICArtistsTableViewController
+@synthesize artists = _artists;
+
+#pragma mark - Memory Management
+
+- (void)dealloc
+{
+    self.artists = nil;
+    [super dealloc];
+}
 
 @end

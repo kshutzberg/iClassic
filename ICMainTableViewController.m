@@ -26,6 +26,7 @@
 - (void)showPlaylists
 {
     ICPlaylistsTableViewController *playlistsTVC = [self.storyboard instantiateViewControllerWithIdentifier:@"PlaylistsTVC"];
+    playlistsTVC.playlists = [MPMediaQuery playlistsQuery];
     
     [self.navigationController pushViewController:playlistsTVC animated:YES];
 }
@@ -33,6 +34,7 @@
 - (void)showArtists
 {
     ICArtistsTableViewController *artistsTVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ArtistsTVC"];
+    artistsTVC.artists = [MPMediaQuery artistsQuery];
     
     [self.navigationController pushViewController:artistsTVC animated:YES];
 }

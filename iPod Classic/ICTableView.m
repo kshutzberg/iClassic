@@ -17,6 +17,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.showsVerticalScrollIndicator = NO;
+        self.backgroundColor = TABLE_COLOR;
     }
     return self;
 }
