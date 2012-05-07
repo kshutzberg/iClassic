@@ -13,6 +13,6 @@
 
 @interface ICPlaylistsTableViewController : ICTableViewController
 
-@property (nonatomic, retain) MPMediaQuery *playlists;
+@property (nonatomic, retain) NSArray *playlists;
 
 @end

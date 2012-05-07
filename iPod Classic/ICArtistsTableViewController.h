@@ -12,6 +12,6 @@
 
 @interface ICArtistsTableViewController : ICTableViewController
 
-@property (nonatomic, retain) MPMediaQuery *artists;
+@property (nonatomic, retain) NSArray *artists;
 
 @end

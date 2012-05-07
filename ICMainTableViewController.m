@@ -26,7 +26,7 @@
 - (void)showPlaylists
 {
     ICPlaylistsTableViewController *playlistsTVC = [self.storyboard instantiateViewControllerWithIdentifier:@"PlaylistsTVC"];
-    playlistsTVC.playlists = [MPMediaQuery playlistsQuery];
+    playlistsTVC.playlists = [[MPMediaQuery playlistsQuery] collections];
     
     [self.navigationController pushViewController:playlistsTVC animated:YES];
 }
@@ -34,7 +34,7 @@
 - (void)showArtists
 {
     ICArtistsTableViewController *artistsTVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ArtistsTVC"];
-    artistsTVC.artists = [MPMediaQuery artistsQuery];
+    artistsTVC.artists = [[MPMediaQuery artistsQuery] collections];
     
     [self.navigationController pushViewController:artistsTVC animated:YES];
 }
@@ -42,7 +42,7 @@
 - (void)showSongs
 {
     ICSongsTableViewController *songsTVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SongsTVC"];
-    songsTVC.songs = [MPMediaQuery songsQuery];
+    songsTVC.songs = [MPMediaQuery songsQuery].items;
     
     [self.navigationController pushViewController:songsTVC animated:YES];
 }

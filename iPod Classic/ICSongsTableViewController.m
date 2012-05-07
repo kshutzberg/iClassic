@@ -14,14 +14,17 @@
 
 #pragma mark - Model Management
 
-- (void)setSongs:(MPMediaQuery *)songs
+- (void)setSongs:(NSArray *)songs
 {
     if(songs != _songs)
     {
         [_songs release];
         _songs = [songs retain];
         
-        [[MPMusicPlayerController iPodMusicPlayer] setQueueWithQuery:songs];
+        if([songs count]){
+            MPMediaItemCollection *songsCollection = [MPMediaItemCollection collectionWithItems:songs];
+            [[MPMusicPlayerController iPodMusicPlayer] setQueueWithItemCollection:songsCollection];
+        }
         
         [self.tableView reloadData];
     }
@@ -39,7 +42,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [[self.songs items] count];
+    return [self.songs count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -51,7 +54,7 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"SongCell"] autorelease];
     }
     
-    MPMediaItem *song = [[self.songs items] objectAtIndex:indexPath.row];
+    MPMediaItem *song = [self.songs objectAtIndex:indexPath.row];
     
     // Configure the cell...
     
@@ -65,7 +68,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MPMediaItem *song = [[self.songs items] objectAtIndex:indexPath.row];
+    MPMediaItem *song = [self.songs objectAtIndex:indexPath.row];
     [[MPMusicPlayerController iPodMusicPlayer] setNowPlayingItem:song];
     [[MPMusicPlayerController iPodMusicPlayer] play];
 }
