@@ -13,6 +13,7 @@
 #import "ICPlaylistsTableViewController.h"
 #import "ICArtistsTableViewController.h"
 #import "ICSongsTableViewController.h"
+#import "ICNowPlayingViewController.h"
 
 @implementation ICMainTableViewController
 
@@ -20,7 +21,8 @@
 
 -(void)showNowPlaying
 {
-    
+    ICNowPlayingViewController *nowPlayingTVC = [self.storyboard instantiateViewControllerWithIdentifier:@"NowPlayingTVC"];    
+    [self.navigationController pushViewController:nowPlayingTVC animated:YES];
 }
 
 - (void)showPlaylists

@@ -24,31 +24,35 @@
 }
 
 #pragma mark - Screen View Controller Protocol
-
+    
 #pragma mark Scroll wheel delegate
 
 - (void)scrollWheel:(ICScrollWheelView *)scrollWheel pressedButtonAtLocation:(ICScrollWheelButtonLocation)location
 {
     MPMusicPlayerController *musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
-    
     switch (location) {
+        // Menu Button Pressed
         case ICScrollWheelButtonLocationTop:
             //self.tableViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"mainTV"];
             if([self.navigationController.viewControllers count] > 1){
                 [self.navigationController popViewControllerAnimated:YES];
             }
             break;
+        // Play/Pause Button Pressed
         case ICScrollWheelButtonLocationBottom:
             [musicPlayer playbackState] == MPMusicPlaybackStatePlaying ? [musicPlayer pause] : [musicPlayer play];
             break;
+        // Rewind Button Pressed
         case ICScrollWheelButtonLocationLeft:
             (musicPlayer.currentPlaybackTime > 2) ? [musicPlayer skipToBeginning] : [musicPlayer skipToPreviousItem];
             [musicPlayer play];
             break;
+        // Fastforward Button Pressed
         case ICScrollWheelButtonLocationRight:
             [musicPlayer skipToNextItem];
             [musicPlayer play];
             break;
+        // Select Button Pressed
         case ICScrollWheelButtonLocationCenter:
             [self selectCurrentRow];
             break;
