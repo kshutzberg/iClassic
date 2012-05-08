@@ -22,7 +22,6 @@
         [_playlists release];
         _playlists = [playlists retain];
         
-        self.tableView.rowHeight = 24;
         [self.tableView reloadData];
     }
 }

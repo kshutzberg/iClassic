@@ -23,7 +23,6 @@
         [_artists release];
         _artists = [artists retain];
         
-        self.tableView.rowHeight = 24;
         [self.tableView reloadData];
     }
 }
