@@ -179,6 +179,13 @@
     // e.g. self.myOutlet = nil;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    //self.scrollWheel.rotationTriggerSize = 20;
+}
+
 
 // Automatically select the first cell when the view appears
 
