@@ -8,18 +8,21 @@
 
 #import "ICPlaylistsTableViewController.h"
 
+#import "ICSongsTableViewController.h"
+
 @implementation ICPlaylistsTableViewController
 @synthesize playlists = _playlists;
 
 #pragma mark - Model Management
 
-- (void)setPlaylists:(MPMediaQuery *)playlists
+- (void)setPlaylists:(NSArray *)playlists
 {
     if(playlists != _playlists)
     {
         [_playlists release];
         _playlists = [playlists retain];
         
+        self.tableView.rowHeight = 24;
         [self.tableView reloadData];
     }
 }
@@ -36,7 +39,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [[self.playlists items] count];
+    return [self.playlists count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -48,11 +51,11 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    MPMediaItem *playlist = [[self.playlists items] objectAtIndex:indexPath.row];
+    MPMediaPlaylist *playlist = [self.playlists objectAtIndex:indexPath.row];
     
     // Configure the cell...
     
-    cell.textLabel.text = [playlist valueForProperty:MPMediaItemPropertyTitle];
+    cell.textLabel.text = [playlist valueForProperty:MPMediaPlaylistPropertyName];
     
     return cell;
 }
@@ -61,9 +64,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    MPMediaItem *playlist = [[self.playlists items] objectAtIndex:indexPath.row];
-//    
-//    [[MPMusicPlayerController iPodMusicPlayer] setQueueWithQuery:[MPMediaQuery songsQuery]];
+    MPMediaPlaylist *playlist = [self.playlists objectAtIndex:indexPath.row];
+    
+    ICSongsTableViewController *songsTVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SongsTVC"];
+    songsTVC.songs = playlist.items;
+    
+    [self.navigationController pushViewController:songsTVC animated:YES];
 }
 
 
