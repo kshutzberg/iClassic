@@ -7,6 +7,7 @@
 //
 
 #import "ICSongsTableViewController.h"
+#import "ICNowPlayingViewController.h"
 #import "Colors.h"
 
 @implementation ICSongsTableViewController
@@ -71,6 +72,11 @@
     MPMediaItem *song = [self.songs objectAtIndex:indexPath.row];
     [[MPMusicPlayerController iPodMusicPlayer] setNowPlayingItem:song];
     [[MPMusicPlayerController iPodMusicPlayer] play];
+    
+    //Push the now-playing view controller
+    ICNowPlayingViewController *nowPlayingTVC = [self.storyboard instantiateViewControllerWithIdentifier:@"NowPlayingTVC"];
+    [self.navigationController pushViewController:nowPlayingTVC animated:YES];
+    
 }
 
 #pragma mark - Memory Management

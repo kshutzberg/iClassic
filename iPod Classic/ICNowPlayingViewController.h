@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ScreenViewController.h"
 
-@interface ICNowPlayingViewController : UIViewController
+@interface ICNowPlayingViewController : UIViewController <ICScreenViewController>
 
 @end

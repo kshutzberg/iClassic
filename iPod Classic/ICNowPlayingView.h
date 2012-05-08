@@ -10,13 +10,8 @@
 
 @interface ICNowPlayingView : UIView
 
-@property (nonatomic, copy) NSString *bannerText;           // Main Text on screen: traditionally "Artist \n Song \n album"
-
-@property (nonatomic, assign) int currentSongNumber;        // These two will be used to display in the top left:
-@property (nonatomic, assign) int totalNumberOfSongs;       // [current #] of [total #]
-
-@property (nonatomic, assign) NSTimeInterval currentTime;   // Displayed at the bottom left under the progress bar
-@property (nonatomic, assign) NSTimeInterval totalTime;     // Displayed at the bottom right under the progress bar
-
+@property (nonatomic, retain) IBOutlet UILabel *songTitle;
+@property (nonatomic, retain) IBOutlet UILabel *artist;
+@property (nonatomic, retain) IBOutlet UIProgressView *progressView; //TODO: update to custom progress view
 
 @end
