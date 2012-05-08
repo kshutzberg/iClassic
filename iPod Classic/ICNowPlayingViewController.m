@@ -77,7 +77,7 @@
 
 - (void)scrollWheel:(ICScrollWheelView *)scrollWheel didRotate:(CGFloat)degrees {
     MPMusicPlayerController *musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
-    musicPlayer.volume += (degrees > 0) ? .05 : -.05;
+    musicPlayer.volume += (degrees > 0) ? .06 : -.06;
 }
 
 #pragma mark helpers
@@ -88,7 +88,10 @@
     view.songTitle.text = [nowPlayingItem valueForProperty:MPMediaItemPropertyTitle];
     view.artist.text = [nowPlayingItem valueForProperty:MPMediaItemPropertyArtist];
     //Approximately update time played
-    self.timeCurrentSongPlayed += [musicPlayer playbackState] == MPMusicPlaybackStatePlaying ? .1 : 0;
+    
+    //self.timeCurrentSongPlayed += [musicPlayer playbackState] == MPMusicPlaybackStatePlaying ? .1 : 0;
+    self.timeCurrentSongPlayed = [musicPlayer currentPlaybackTime];
+    
     NSNumber *songLength = [nowPlayingItem valueForProperty:MPMediaItemPropertyPlaybackDuration];
     view.progressView.progress = self.timeCurrentSongPlayed / [songLength floatValue];  
 }
@@ -115,7 +118,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [ICIPodViewController sharedIpod].scrollWheel.rotationTriggerSize = 15;
+    [ICIPodViewController sharedIpod].scrollWheel.rotationTriggerSize = 10;
 }
 
 - (void)viewDidUnload

@@ -31,7 +31,7 @@ static inline CGFloat getAngle(CGPoint startingPoint, CGPoint endingPoint)
 @end
 
 #define MINIMUM_RADIUS      10
-#define MAX_DEGREES         30
+#define MAX_DEGREES         50
 
 @implementation ICWheelGestureRecognizer
 @synthesize rotationDegrees = _rotationDegrees;
