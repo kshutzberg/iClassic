@@ -29,8 +29,21 @@
 
 @synthesize screenNavigationController = _screenNavigationController;
 
-#pragma mark - Custom setters
+#pragma mark - Singleton methods
 
+static ICIPodViewController *sharedIpod = nil;
+
++ (id)sharedIpod
+{
+    if(!sharedIpod)sharedIpod = [self allocWithZone:NULL];
+    return sharedIpod;
+}
+
++ (id)alloc {return [self sharedIpod];}
+
+- (NSUInteger)retainCount{ return NSUIntegerMax; }
+- (id)retain { return self; }
+- (oneway void)release{ /* Do nothing */ };
 
 
 #pragma mark - IC Table View Controller Delegate

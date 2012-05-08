@@ -17,6 +17,8 @@
 
 @interface ICIPodViewController : UIViewController < ICTableViewControllerDelegate, ICScrollWheelDelegate >
 
++ (ICIPodViewController *)sharedIpod;
+
 @property (assign, nonatomic) IBOutlet ICScrollWheelView *scrollWheel;
 @property (retain, nonatomic) IBOutlet UIImageView *iPodView;
 

@@ -8,6 +8,7 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import "ICNowPlayingViewController.h"
 #import "ICNowPlayingView.h"
+#import "ICIPodViewController.h"
 
 @interface ICNowPlayingViewController ()
 
@@ -76,7 +77,7 @@
 
 - (void)scrollWheel:(ICScrollWheelView *)scrollWheel didRotate:(CGFloat)degrees {
     MPMusicPlayerController *musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
-    musicPlayer.volume += (degrees > 0) ? .1 : -.1;
+    musicPlayer.volume += (degrees > 0) ? .05 : -.05;
 }
 
 #pragma mark helpers
@@ -109,6 +110,12 @@
     
     self.timeCurrentSongPlayed = 0;
     [self updateNowPlayingView];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [ICIPodViewController sharedIpod].scrollWheel.rotationTriggerSize = 15;
 }
 
 - (void)viewDidUnload

@@ -11,6 +11,8 @@
 
 #import <MediaPlayer/MediaPlayer.h>
 
+#import "ICIPodViewController.h"
+
 @interface ICTableViewController ()
 
 @end
@@ -182,8 +184,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    //self.scrollWheel.rotationTriggerSize = 20;
+    self.tableView.userInteractionEnabled = NO;
+    [ICIPodViewController sharedIpod].scrollWheel.rotationTriggerSize = 20;
 }
 
 
