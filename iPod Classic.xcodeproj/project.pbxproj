@@ -34,8 +34,9 @@
 		0A9154FB154F567C00513C69 /* ICTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9154FA154F567C00513C69 /* ICTableViewController.m */; };
 		0A9154FE154F71A400513C69 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A9154FD154F71A400513C69 /* MediaPlayer.framework */; };
 		0A915501154F720900513C69 /* ICMediaTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A915500154F720900513C69 /* ICMediaTableViewController.m */; };
-		9A360F0C155876AB00D95CFC /* Diamond Position Tracker.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A360F09155876AB00D95CFC /* Diamond Position Tracker.png */; };
-		9A360F0D155876AB00D95CFC /* Play Bar Empty.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A360F0A155876AB00D95CFC /* Play Bar Empty.png */; };
+		9A06E52D155998F100DFC6AD /* ICNowPlayingProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A06E52C155998F100DFC6AD /* ICNowPlayingProgressView.m */; };
+		9A360F0C155876AB00D95CFC /* DiamondPositionTracker.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A360F09155876AB00D95CFC /* DiamondPositionTracker.png */; };
+		9A360F0D155876AB00D95CFC /* PlaybarEmpty.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A360F0A155876AB00D95CFC /* PlaybarEmpty.png */; };
 		9A360F0E155876AB00D95CFC /* Playing Now.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A360F0B155876AB00D95CFC /* Playing Now.png */; };
 		ECE31CF1154F941000896711 /* Icon_iPhone_4.png in Resources */ = {isa = PBXBuildFile; fileRef = ECE31CF0154F941000896711 /* Icon_iPhone_4.png */; };
 /* End PBXBuildFile section */
@@ -88,8 +89,10 @@
 		0A9154FD154F71A400513C69 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		0A9154FF154F720900513C69 /* ICMediaTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICMediaTableViewController.h; sourceTree = "<group>"; };
 		0A915500154F720900513C69 /* ICMediaTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICMediaTableViewController.m; sourceTree = "<group>"; };
-		9A360F09155876AB00D95CFC /* Diamond Position Tracker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Diamond Position Tracker.png"; sourceTree = "<group>"; };
-		9A360F0A155876AB00D95CFC /* Play Bar Empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Play Bar Empty.png"; sourceTree = "<group>"; };
+		9A06E52B155998F100DFC6AD /* ICNowPlayingProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICNowPlayingProgressView.h; sourceTree = "<group>"; };
+		9A06E52C155998F100DFC6AD /* ICNowPlayingProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICNowPlayingProgressView.m; sourceTree = "<group>"; };
+		9A360F09155876AB00D95CFC /* DiamondPositionTracker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DiamondPositionTracker.png; sourceTree = "<group>"; };
+		9A360F0A155876AB00D95CFC /* PlaybarEmpty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PlaybarEmpty.png; sourceTree = "<group>"; };
 		9A360F0B155876AB00D95CFC /* Playing Now.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Playing Now.png"; sourceTree = "<group>"; };
 		9AE8C35B155916FE00602F07 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		9AE8C35E155918AE00602F07 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
@@ -116,6 +119,8 @@
 			children = (
 				0A9154F6154F55F000513C69 /* ICScrollWheelView.h */,
 				0A9154F7154F55F000513C69 /* ICScrollWheelView.m */,
+				9A06E52B155998F100DFC6AD /* ICNowPlayingProgressView.h */,
+				9A06E52C155998F100DFC6AD /* ICNowPlayingProgressView.m */,
 				0A0CB3EB1554A30C009D5924 /* ICTableView.h */,
 				0A0CB3EC1554A30C009D5924 /* ICTableView.m */,
 				0A0CB3E81554A2F1009D5924 /* ICNowPlayingView.h */,
@@ -235,8 +240,8 @@
 		9A360F08155876AB00D95CFC /* Play Now Elements */ = {
 			isa = PBXGroup;
 			children = (
-				9A360F09155876AB00D95CFC /* Diamond Position Tracker.png */,
-				9A360F0A155876AB00D95CFC /* Play Bar Empty.png */,
+				9A360F09155876AB00D95CFC /* DiamondPositionTracker.png */,
+				9A360F0A155876AB00D95CFC /* PlaybarEmpty.png */,
 				9A360F0B155876AB00D95CFC /* Playing Now.png */,
 			);
 			path = "Play Now Elements";
@@ -310,8 +315,8 @@
 				0A9154F1154F54B000513C69 /* iPod Body.png in Resources */,
 				0A9154F2154F54B000513C69 /* Scroll Wheel.png in Resources */,
 				ECE31CF1154F941000896711 /* Icon_iPhone_4.png in Resources */,
-				9A360F0C155876AB00D95CFC /* Diamond Position Tracker.png in Resources */,
-				9A360F0D155876AB00D95CFC /* Play Bar Empty.png in Resources */,
+				9A360F0C155876AB00D95CFC /* DiamondPositionTracker.png in Resources */,
+				9A360F0D155876AB00D95CFC /* PlaybarEmpty.png in Resources */,
 				9A360F0E155876AB00D95CFC /* Playing Now.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -339,6 +344,7 @@
 				0A0CB40C15559B5D009D5924 /* ICPlaylistsTableViewController.m in Sources */,
 				0A0CB40F15559B78009D5924 /* ICArtistsTableViewController.m in Sources */,
 				0A0CB412155741B7009D5924 /* ICMainTableViewController.m in Sources */,
+				9A06E52D155998F100DFC6AD /* ICNowPlayingProgressView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -102,6 +102,13 @@
     
 	// Do any additional setup after loading the view.
     self.updateTimer = [NSTimer scheduledTimerWithTimeInterval:.1 target:self selector:@selector(updateNowPlayingView) userInfo:nil repeats:YES];
+
+    
+    //Must increase the size of the progress view for proper rendering without clipping
+    //It is impossible to increase the height of progress view by using the story board
+    ICNowPlayingView *view = (ICNowPlayingView *)self.view;
+    [view.progressView setFrame:CGRectMake(view.progressView.frame.origin.x, view.progressView.frame.origin.y, 192, 13)];
+    
     self.timeCurrentSongPlayed = 0;
     [self updateNowPlayingView];
 }
