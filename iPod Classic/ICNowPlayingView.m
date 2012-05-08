@@ -11,6 +11,6 @@
 
 @implementation ICNowPlayingView
 
-@synthesize progressView = _progressView, mainLabel = _mainLabel;
+@synthesize progressView = _progressView, songTitle = _songTitle, artist = _artist;
 
 @end

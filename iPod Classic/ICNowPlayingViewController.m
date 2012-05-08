@@ -81,14 +81,12 @@
 
 #pragma mark helpers
 - (void)updateNowPlayingView {
-
-    
     MPMusicPlayerController *musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
     MPMediaItem *nowPlayingItem = musicPlayer.nowPlayingItem;
     ICNowPlayingView *view = (ICNowPlayingView *)self.view;
-    view.mainLabel.text = [nowPlayingItem valueForProperty:MPMediaItemPropertyTitle];
-    
-    //Approximately Update time played
+    view.songTitle.text = [nowPlayingItem valueForProperty:MPMediaItemPropertyTitle];
+    view.artist.text = [nowPlayingItem valueForProperty:MPMediaItemPropertyArtist];
+    //Approximately update time played
     self.timeCurrentSongPlayed += [musicPlayer playbackState] == MPMusicPlaybackStatePlaying ? .1 : 0;
     NSNumber *songLength = [nowPlayingItem valueForProperty:MPMediaItemPropertyPlaybackDuration];
     view.progressView.progress = self.timeCurrentSongPlayed / [songLength floatValue];  

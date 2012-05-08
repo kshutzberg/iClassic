@@ -10,7 +10,8 @@
 
 @interface ICNowPlayingView : UIView
 
-@property (nonatomic, retain) IBOutlet UILabel *mainLabel;
+@property (nonatomic, retain) IBOutlet UILabel *songTitle;
+@property (nonatomic, retain) IBOutlet UILabel *artist;
 @property (nonatomic, retain) IBOutlet UIProgressView *progressView; //TODO: update to custom progress view
 
 @end
