@@ -29,38 +29,16 @@
     
 #pragma mark Scroll wheel delegate
 
-- (void)scrollWheel:(ICScrollWheelView *)scrollWheel pressedButtonAtLocation:(ICScrollWheelButtonLocation)location
+- (void)scrollWheelPressedTopButton:(ICScrollWheelView *)scrollWheel
 {
-    MPMusicPlayerController *musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
-    switch (location) {
-        // Menu Button Pressed
-        case ICScrollWheelButtonLocationTop:
-            //self.tableViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"mainTV"];
-            if([self.navigationController.viewControllers count] > 1){
-                [self.navigationController popViewControllerAnimated:YES];
-            }
-            break;
-        // Play/Pause Button Pressed
-        case ICScrollWheelButtonLocationBottom:
-            [musicPlayer playbackState] == MPMusicPlaybackStatePlaying ? [musicPlayer pause] : [musicPlayer play];
-            break;
-        // Rewind Button Pressed
-        case ICScrollWheelButtonLocationLeft:
-            (musicPlayer.currentPlaybackTime > 2) ? [musicPlayer skipToBeginning] : [musicPlayer skipToPreviousItem];
-            [musicPlayer play];
-            break;
-        // Fastforward Button Pressed
-        case ICScrollWheelButtonLocationRight:
-            [musicPlayer skipToNextItem];
-            [musicPlayer play];
-            break;
-        // Select Button Pressed
-        case ICScrollWheelButtonLocationCenter:
-            [self selectCurrentRow];
-            break;
-        default:
-            break;
+    if([self.navigationController.viewControllers count] > 1){
+        [self.navigationController popViewControllerAnimated:YES];
     }
+}
+
+- (void)scrollWheelPressedCenterButton:(ICScrollWheelView *)scrollWheel
+{
+    [self selectCurrentRow];
 }
 
 
@@ -83,6 +61,10 @@
     
     UITableViewScrollPosition position = UITableViewScrollPositionNone;
     BOOL shouldSelectNextCell = NO;
+    
+    // Case 0: If there are no visible cells, return.
+    
+    if(![visibleCells count])return;
     
     // Case 1: selected cell is at the top
     

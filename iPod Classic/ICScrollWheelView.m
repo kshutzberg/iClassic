@@ -73,25 +73,40 @@
     
     
     
-    if(![self.delegate respondsToSelector:@selector(scrollWheel:pressedButtonAtLocation:)])return;
+    //if(![self.delegate respondsToSelector:@selector(scrollWheel:pressedButtonAtLocation:)])return;
     
     // Handle the touch
     
-    if(CGRectContainsPoint(topSector, location)){
-        [self.delegate scrollWheel:self pressedButtonAtLocation:ICScrollWheelButtonLocationTop];
+    if(CGRectContainsPoint(topSector, location) && [self.delegate respondsToSelector:@selector(scrollWheelPressedTopButton:)]){
+        //[self.delegate scrollWheel:self pressedButtonAtLocation:ICScrollWheelButtonLocationTop];
+        [self.delegate scrollWheelPressedTopButton:self];
     }
-    if(CGRectContainsPoint(bottomSector, location)){
-        [self.delegate scrollWheel:self pressedButtonAtLocation:ICScrollWheelButtonLocationBottom];
+    if(CGRectContainsPoint(bottomSector, location) && [self.delegate respondsToSelector:@selector(scrollWheelPressedBottomButton:)]){
+        //[self.delegate scrollWheel:self pressedButtonAtLocation:ICScrollWheelButtonLocationBottom];
+        [self.delegate scrollWheelPressedBottomButton:self];
     }
-    if(CGRectContainsPoint(leftSector, location)){
-        [self.delegate scrollWheel:self pressedButtonAtLocation:ICScrollWheelButtonLocationLeft];
+    if(CGRectContainsPoint(leftSector, location) && [self.delegate respondsToSelector:@selector(scrollWheelPressedLeftButton:)]){
+        //[self.delegate scrollWheel:self pressedButtonAtLocation:ICScrollWheelButtonLocationLeft];
+        [self.delegate scrollWheelPressedLeftButton:self];
     }
-    if(CGRectContainsPoint(rightSector, location)){
-        [self.delegate scrollWheel:self pressedButtonAtLocation:ICScrollWheelButtonLocationRight];
+    if(CGRectContainsPoint(rightSector, location) && [self.delegate respondsToSelector:@selector(scrollWheelPressedRightButton:)]){
+        //[self.delegate scrollWheel:self pressedButtonAtLocation:ICScrollWheelButtonLocationRight];
+        [self.delegate scrollWheelPressedRightButton:self];
     }
-    if(CGRectContainsPoint(middleCector, location)){
-        [self.delegate scrollWheel:self pressedButtonAtLocation:ICScrollWheelButtonLocationCenter];
+    if(CGRectContainsPoint(middleCector, location)
+       && [self.delegate respondsToSelector:@selector(scrollWheelPressedCenterButton:)]
+       && recognizer.numberOfTapsRequired == 1)
+    {
+        //[self.delegate scrollWheel:self pressedButtonAtLocation:ICScrollWheelButtonLocationCenter];
+        [self.delegate scrollWheelPressedCenterButton:self];
     }
+    if(CGRectContainsPoint(middleCector, location)
+       && [self.delegate respondsToSelector:@selector(scrollWheelDoubleTappedCenterButton:)]
+       && recognizer.numberOfTapsRequired == 2)
+    {
+        [self.delegate scrollWheelDoubleTappedCenterButton:self];
+    }
+    
 }
 
 - (void)spin:(ICWheelGestureRecognizer *)recognizer

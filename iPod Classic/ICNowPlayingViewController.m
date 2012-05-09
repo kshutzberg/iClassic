@@ -96,6 +96,18 @@
     }
 }
 
+- (void)scrollWheelPressedTopButton:(ICScrollWheelView *)scrollWheel
+{
+    //Stop the timer
+    [self.updateTimer invalidate];
+    self.updateTimer = nil;
+    
+    //Change Views
+    if([self.navigationController.viewControllers count] > 1){
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
 - (void)scrollWheel:(ICScrollWheelView *)scrollWheel didRotate:(CGFloat)degrees {
     MPMusicPlayerController *musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
     musicPlayer.volume += (degrees > 0) ? .06 : -.06;

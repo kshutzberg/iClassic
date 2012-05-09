@@ -46,7 +46,7 @@ static ICIPodViewController *sharedIpod = nil;
 - (oneway void)release{ /* Do nothing */ };
 
 
-#pragma mark - IC Table View Controller Delegate
+#pragma mark - Scroll Wheel delegate
 
 
 - (void)scrollWheel:(ICScrollWheelView *)scrollWheel didRotate:(CGFloat)degrees
@@ -56,17 +56,134 @@ static ICIPodViewController *sharedIpod = nil;
     [self.screenNavigationController.visibleViewController scrollWheel:scrollWheel didRotate:degrees];
 }
 
-- (void)scrollWheel:(ICScrollWheelView *)scrollWheel pressedButtonAtLocation:(ICScrollWheelButtonLocation)location
+- (void)scrollWheel:(ICScrollWheelView *)scrollWheel pressedButtonAtLocation:(ICScrollWheelButtonLocation)location{}
+
+
+- (void)scrollWheelPressedTopButton:(ICScrollWheelView *)scrollWheel
 {
-    [self.screenNavigationController.visibleViewController scrollWheel:scrollWheel pressedButtonAtLocation:location];
+    UIViewController < ICScrollWheelDelegate > *controller = self.screenNavigationController.visibleViewController;
+    
+    // Forward this message to the visisble view controller if they implement it
+    
+    if([controller respondsToSelector:_cmd]){
+        [controller performSelector:_cmd withObject:scrollWheel];
+    }
+    
+    // Default behavior
+    
+    else{
+        NSLog(@"Menu button pressed. Ignoring...");
+    }
+}
+
+- (void)scrollWheelPressedBottomButton:(ICScrollWheelView *)scrollWheel
+{
+    UIViewController < ICScrollWheelDelegate > *controller = self.screenNavigationController.visibleViewController;
+    
+    // Forward this message to the visisble view controller if they implement it
+    
+    if([controller respondsToSelector:_cmd]){
+        [controller performSelector:_cmd withObject:scrollWheel];
+    }
+    
+    // Default behavior
+    
+    else{
+        MPMusicPlayerController *musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
+        [musicPlayer playbackState] == MPMusicPlaybackStatePlaying ? [musicPlayer pause] : [musicPlayer play];
+    }
+}
+
+- (void)scrollWheelPressedLeftButton:(ICScrollWheelView *)scrollWheel
+{
+    UIViewController < ICScrollWheelDelegate > *controller = self.screenNavigationController.visibleViewController;
+    
+    // Forward this message to the visisble view controller if they implement it
+    
+    if([controller respondsToSelector:_cmd]){
+        [controller performSelector:_cmd withObject:scrollWheel];
+    }
+    
+    // Default behavior
+    
+    else{
+        MPMusicPlayerController *musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
+        (musicPlayer.currentPlaybackTime > 2) ? [musicPlayer skipToBeginning] : [musicPlayer skipToPreviousItem];
+        [musicPlayer play];
+    }
+}
+
+- (void)scrollWheelPressedRightButton:(ICScrollWheelView *)scrollWheel
+{
+    UIViewController < ICScrollWheelDelegate > *controller = self.screenNavigationController.visibleViewController;
+    
+    // Forward this message to the visisble view controller if they implement it
+    
+    if([controller respondsToSelector:_cmd]){
+        [controller performSelector:_cmd withObject:scrollWheel];
+    }
+    
+    // Default behavior
+
+    else{
+        MPMusicPlayerController *musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
+        [musicPlayer skipToNextItem];
+        [musicPlayer play];
+    }
+}
+
+- (void)scrollWheelPressedCenterButton:(ICScrollWheelView *)scrollWheel
+{
+    UIViewController < ICScrollWheelDelegate > *controller = self.screenNavigationController.visibleViewController;
+    
+    // Forward this message to the visisble view controller if they implement it
+    
+    if([controller respondsToSelector:_cmd]){
+        [controller performSelector:_cmd withObject:scrollWheel];
+    }
+    
+    // Default behavior
+    
+    else{
+        NSLog(@"Center button pressed. Ignoring...");
+    }
+}
+
+- (void)scrollWheelDoubleTappedCenterButton:(ICScrollWheelView *)scrollWheel
+{
+    UIViewController < ICScrollWheelDelegate > *controller = self.screenNavigationController.visibleViewController;
+    
+    // Forward this message to the visisble view controller if they implement it
+    
+    if([controller respondsToSelector:_cmd]){
+        [controller performSelector:_cmd withObject:scrollWheel];
+    }
+    
+    // Default behavior
+    
+    else{
+        NSLog(@"Center button double tapped. Ignoring...");
+    }
 }
 
 #pragma mark - View controller life cycle
 
 
 - (void)setupScreen
-{
-    self.screenNavigationController = [[ICNavigationController alloc] initWithRootViewController:nil];
+{    
+    // Set up the table view controller
+    
+    ICTableViewController *tableViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"mainTV"];
+    tableViewController.tableView.backgroundColor = [UIColor clearColor];
+    
+    tableViewController.delegate = self;
+    
+    tableViewController.tableView.showsVerticalScrollIndicator = NO;
+    tableViewController.tableView.userInteractionEnabled = NO;
+    
+    // set this as the root view controller in a navigation controller
+    
+    self.screenNavigationController = [[ICNavigationController alloc] initWithRootViewController:tableViewController];
     self.screenNavigationController.view.frame = self.tableView.frame;
     
     // configure the screen navigation controller
@@ -78,21 +195,6 @@ static ICIPodViewController *sharedIpod = nil;
     [self.tableView removeFromSuperview];
     self.tableView = nil;
     [self.view insertSubview:self.screenNavigationController.view belowSubview:self.iPodView];
-    
-    // Set up the table view controller
-    
-    ICTableViewController *tableViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"mainTV"];
-    tableViewController.tableView.backgroundColor = [UIColor clearColor];
-    
-    tableViewController.delegate = self;
-    
-    tableViewController.tableView.showsVerticalScrollIndicator = NO;
-    tableViewController.tableView.userInteractionEnabled = NO;
-    
-    // set this as the root view controller
-    [self.screenNavigationController pushViewController:tableViewController animated:NO];
-    
-    //self.tableViewController = tableViewController;
 }
 
 - (void)viewDidLoad
