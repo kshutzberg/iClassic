@@ -13,7 +13,7 @@
     UIImage *cursor = [UIImage imageNamed:@"DiamondPositionTracker.png"];
     NSInteger maxWidth = rect.size.width - cursor.size.width;
     NSInteger curWidth = floor([self progress] * maxWidth);  
-    [cursor drawAtPoint:CGPointMake(curWidth, 0)];//rect.size.height / 2 - cursor.size.height / 2)];
+    [cursor drawAtPoint:CGPointMake(curWidth, 0)];
 }
 
 @end
