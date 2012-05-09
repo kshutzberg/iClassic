@@ -22,7 +22,7 @@
         [_songs release];
         _songs = [songs retain];
         
-        if([songs count]){
+        if([songs count] && ![MPMusicPlayerController iPodMusicPlayer].nowPlayingItem){
             MPMediaItemCollection *songsCollection = [MPMediaItemCollection collectionWithItems:songs];
             [[MPMusicPlayerController iPodMusicPlayer] setQueueWithItemCollection:songsCollection];
         }
@@ -31,6 +31,20 @@
     }
 }
 
+#pragma mark - View lifecycle
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    // select the current song playing
+    
+    NSUInteger nowPlayingIndex = [self.songs indexOfObject:[MPMusicPlayerController iPodMusicPlayer].nowPlayingItem];
+    if (nowPlayingIndex != NSNotFound) {
+        NSIndexPath *nowPlayingIndexPath = [NSIndexPath indexPathForRow:nowPlayingIndex inSection:0];
+        [self.tableView selectRowAtIndexPath:nowPlayingIndexPath animated:NO scrollPosition:UITableViewScrollPositionMiddle];
+    }
+}
 
 #pragma mark - Table view data source
 
