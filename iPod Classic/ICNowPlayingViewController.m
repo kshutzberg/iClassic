@@ -14,13 +14,21 @@
 
 - (void)updateNowPlayingView;
 
+
+@property (nonatomic, retain) MPMediaItem *nowPlayingItem;
 @property (nonatomic, retain) NSTimer *updateTimer;
 @property (nonatomic, assign) float timeCurrentSongPlayed;
+@property (nonatomic, assign) float songDuration;
+
+- (void)resetNowPlayingView;
+- (NSString *)formattedTimedFromTimeInSeconds:(float)seconds;
+
 @end
 
 @implementation ICNowPlayingViewController
 
-@synthesize updateTimer = _updateTimer, timeCurrentSongPlayed = _timeCurrentSongPlayed;
+@synthesize updateTimer = _updateTimer, timeCurrentSongPlayed = _timeCurrentSongPlayed, songDuration = _songDuration, songs = _songs,
+            currentSongIndex = _currentSongIndex, nowPlayingItem = _nowPlayingItem;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -55,17 +63,30 @@
             break;
         // Rewind Button Pressed
         case ICScrollWheelButtonLocationLeft:
-            self.timeCurrentSongPlayed = 0;
             (musicPlayer.currentPlaybackTime > 2) ? [musicPlayer skipToBeginning] : [musicPlayer skipToPreviousItem];
             [musicPlayer play];
-            [self updateNowPlayingView];
+            
+            //Set the current song to the previous song if we skip to previous item
+            if (musicPlayer.currentPlaybackTime < 2) {
+                self.currentSongIndex -= 1;
+                //The first song's previous song is the last song
+                if (self.currentSongIndex < 0) {
+                    self.currentSongIndex = self.songs.count - 1;
+                }
+            }
+            
+            [self resetNowPlayingView];
             break;
         // Fastforward Button Pressed
         case ICScrollWheelButtonLocationRight:
-            self.timeCurrentSongPlayed = 0;
             [musicPlayer skipToNextItem];
             [musicPlayer play];
-            [self updateNowPlayingView];
+            
+            //Set the current song to the next song
+            self.currentSongIndex++;
+            self.currentSongIndex %= self.songs.count;
+            
+            [self resetNowPlayingView];
             break;
         // Select Button Pressed
         case ICScrollWheelButtonLocationCenter:
@@ -80,20 +101,40 @@
     musicPlayer.volume += (degrees > 0) ? .06 : -.06;
 }
 
+- (void)resetNowPlayingView {
+    MPMusicPlayerController *musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
+    self.nowPlayingItem = musicPlayer.nowPlayingItem;
+    ICNowPlayingView *view = (ICNowPlayingView *)self.view;
+    view.songTitle.text = [self.nowPlayingItem valueForProperty:MPMediaItemPropertyTitle];
+    view.artist.text = [self.nowPlayingItem valueForProperty:MPMediaItemPropertyArtist];
+    view.tracksCounter.text = [NSString stringWithFormat:@"%d of %d", self.currentSongIndex + 1, self.songs.count];  //Note currentSongIndex is zero based -> index 0 = song number 1
+    NSNumber *songLength = [self.nowPlayingItem valueForProperty:MPMediaItemPropertyPlaybackDuration];
+    self.songDuration = [songLength floatValue];
+    self.timeCurrentSongPlayed = 0;
+}
+
 #pragma mark helpers
 - (void)updateNowPlayingView {
     MPMusicPlayerController *musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
-    MPMediaItem *nowPlayingItem = musicPlayer.nowPlayingItem;
+    MPMediaItem *currentPlayingItem = musicPlayer.nowPlayingItem;
+    //if the song has changed naturally we must detect and update the now playing view
+    if (![self.nowPlayingItem isEqual:currentPlayingItem]) { 
+        self.currentSongIndex++;
+        self.currentSongIndex %= self.songs.count;
+        [self resetNowPlayingView];
+    }
+    
     ICNowPlayingView *view = (ICNowPlayingView *)self.view;
-    view.songTitle.text = [nowPlayingItem valueForProperty:MPMediaItemPropertyTitle];
-    view.artist.text = [nowPlayingItem valueForProperty:MPMediaItemPropertyArtist];
-    //Approximately update time played
-    
-    //self.timeCurrentSongPlayed += [musicPlayer playbackState] == MPMusicPlaybackStatePlaying ? .1 : 0;
     self.timeCurrentSongPlayed = [musicPlayer currentPlaybackTime];
-    
-    NSNumber *songLength = [nowPlayingItem valueForProperty:MPMediaItemPropertyPlaybackDuration];
-    view.progressView.progress = self.timeCurrentSongPlayed / [songLength floatValue];  
+    view.progressView.progress = self.timeCurrentSongPlayed / self.songDuration;
+    view.timeThusFar.text = [self formattedTimedFromTimeInSeconds:self.timeCurrentSongPlayed];
+    view.timeRemaining.text = [self formattedTimedFromTimeInSeconds:self.songDuration - self.timeCurrentSongPlayed];
+}
+
+- (NSString *)formattedTimedFromTimeInSeconds:(float)seconds {
+    int minutes = seconds / 60;
+    int adjustedSeconds = (int)seconds % 60;
+    return [NSString stringWithFormat:@"%d:%02d",minutes,adjustedSeconds];
 }
 
 # pragma mark view life cycle
@@ -102,17 +143,16 @@
 {
     [super viewDidLoad];
     
-	// Do any additional setup after loading the view.
+	//Create a timer to update the progress view
     self.updateTimer = [NSTimer scheduledTimerWithTimeInterval:.1 target:self selector:@selector(updateNowPlayingView) userInfo:nil repeats:YES];
 
-    
     //Must increase the size of the progress view for proper rendering without clipping
     //It is impossible to increase the height of progress view by using the story board
     ICNowPlayingView *view = (ICNowPlayingView *)self.view;
     [view.progressView setFrame:CGRectMake(view.progressView.frame.origin.x, view.progressView.frame.origin.y, 192, 13)];
     
-    self.timeCurrentSongPlayed = 0;
-    [self updateNowPlayingView];
+    //Configure the now playing view
+    [self resetNowPlayingView];
 }
 
 - (void)viewWillAppear:(BOOL)animated
