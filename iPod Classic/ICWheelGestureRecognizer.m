@@ -24,6 +24,12 @@ static inline CGFloat getAngle(CGPoint startingPoint, CGPoint endingPoint)
     return bearingDegrees;
 }
 
+static inline CGFloat distance(CGPoint start, CGPoint end){
+    CGFloat deltaX = start.x - end.x;
+    CGFloat deltaY = start.y - end.y;
+    return sqrtf(deltaX * deltaX + deltaY * deltaY);
+}
+
 @interface ICWheelGestureRecognizer ()
 
 @property (nonatomic, readwrite) CGFloat bearing;
@@ -35,8 +41,9 @@ static inline CGFloat getAngle(CGPoint startingPoint, CGPoint endingPoint)
 
 @implementation ICWheelGestureRecognizer
 @synthesize rotationDegrees = _rotationDegrees;
-@synthesize origin = _origin;
 @synthesize bearing = _bearing;
+@synthesize origin = _origin;
+@synthesize innerRadius = _innerRadius, outerRadius = _outerRadius;
 
 #pragma mark - Touch Handling
 
@@ -53,6 +60,12 @@ static inline CGFloat getAngle(CGPoint startingPoint, CGPoint endingPoint)
     
     CGPoint nowPoint = [[touches anyObject] locationInView:self.view];
     CGPoint prevPoint = [[touches anyObject] previousLocationInView:self.view];
+    
+    // Validate that the nowPoint is within the prescribed region
+    
+    CGFloat radius = distance(nowPoint, self.origin);
+    
+    if(radius < self.innerRadius || radius > self.outerRadius)return;
     
     CGFloat thetaNow = getAngle(self.origin, nowPoint);
     CGFloat thetaPrev = getAngle(self.origin, prevPoint);

@@ -9,6 +9,8 @@
 #import "ICScrollWheelView.h"
 #import "ICWheelGestureRecognizer.h"
 
+#define OUTER_RADIUS        ( MAX(self.bounds.size.height, self.bounds.size.width) / 2.0f )
+#define INNER_RADIUS        ((30.0f / 107.0f) * MIN(self.bounds.size.height, self.bounds.size.width) / 2.0f )
 
 @implementation ICScrollWheelView
 @synthesize delegate = _delegate;
@@ -28,8 +30,19 @@
     
     ICWheelGestureRecognizer *wheelGR = [[ICWheelGestureRecognizer alloc] initWithTarget:self action:@selector(spin:)];
     wheelGR.origin = CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2);
+    wheelGR.innerRadius = INNER_RADIUS;
+    wheelGR.outerRadius = OUTER_RADIUS;
     [self addGestureRecognizer:wheelGR];
     [wheelGR release];
+}
+
+#pragma mark - Touch Handling
+
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
+{
+    // We want to intercept all touch events, on the screen in this UI control.
+    // that way if the user is already moving their finger and they it the wheel it will spin.
+    return self;
 }
 
 #pragma mark - Gesture Handling
