@@ -21,6 +21,7 @@
 @property (nonatomic, assign) float songDuration;
 
 - (void)resetNowPlayingView;
+- (NSString *)formattedTimedFromTimeInSeconds:(float)seconds;
 
 @end
 
@@ -65,11 +66,13 @@
             (musicPlayer.currentPlaybackTime > 2) ? [musicPlayer skipToBeginning] : [musicPlayer skipToPreviousItem];
             [musicPlayer play];
             
-            //Set the current song to the previous song
-            self.currentSongIndex -= 1;
-            //The first song's previous song is the last song
-            if (self.currentSongIndex < 0) {
-                self.currentSongIndex = self.songs.count - 1;
+            //Set the current song to the previous song if we skip to previous item
+            if (musicPlayer.currentPlaybackTime < 2) {
+                self.currentSongIndex -= 1;
+                //The first song's previous song is the last song
+                if (self.currentSongIndex < 0) {
+                    self.currentSongIndex = self.songs.count - 1;
+                }
             }
             
             [self resetNowPlayingView];
@@ -80,7 +83,7 @@
             [musicPlayer play];
             
             //Set the current song to the next song
-            self.currentSongIndex += 1;
+            self.currentSongIndex++;
             self.currentSongIndex %= self.songs.count;
             
             [self resetNowPlayingView];
@@ -115,12 +118,23 @@
     MPMusicPlayerController *musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
     MPMediaItem *currentPlayingItem = musicPlayer.nowPlayingItem;
     //if the song has changed naturally we must detect and update the now playing view
-    if (self.nowPlayingItem != currentPlayingItem) { 
+    if (![self.nowPlayingItem isEqual:currentPlayingItem]) { 
+        self.currentSongIndex++;
+        self.currentSongIndex %= self.songs.count;
         [self resetNowPlayingView];
     }
+    
     ICNowPlayingView *view = (ICNowPlayingView *)self.view;
     self.timeCurrentSongPlayed = [musicPlayer currentPlaybackTime];
     view.progressView.progress = self.timeCurrentSongPlayed / self.songDuration;
+    view.timeThusFar.text = [self formattedTimedFromTimeInSeconds:self.timeCurrentSongPlayed];
+    view.timeRemaining.text = [self formattedTimedFromTimeInSeconds:self.songDuration - self.timeCurrentSongPlayed];
+}
+
+- (NSString *)formattedTimedFromTimeInSeconds:(float)seconds {
+    int minutes = seconds / 60;
+    int adjustedSeconds = (int)seconds % 60;
+    return [NSString stringWithFormat:@"%d:%02d",minutes,adjustedSeconds];
 }
 
 # pragma mark view life cycle
