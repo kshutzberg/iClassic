@@ -41,60 +41,60 @@
 
 #pragma mark Scroll wheel delegate
 
-- (void)scrollWheel:(ICScrollWheelView *)scrollWheel pressedButtonAtLocation:(ICScrollWheelButtonLocation)location
-{
-    MPMusicPlayerController *musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
-    //TODO: Code unification
-    switch (location) {
-        // Menu Button Pressed
-        case ICScrollWheelButtonLocationTop:
-            //Stop the timer
-            [self.updateTimer invalidate];
-            self.updateTimer = nil;
-            
-            //Change Views
-            if([self.navigationController.viewControllers count] > 1){
-                [self.navigationController popViewControllerAnimated:YES];
-            }
-            break;
-        // Play/Pause Button Pressed
-        case ICScrollWheelButtonLocationBottom:
-            [musicPlayer playbackState] == MPMusicPlaybackStatePlaying ? [musicPlayer pause] : [musicPlayer play];
-            break;
-        // Rewind Button Pressed
-        case ICScrollWheelButtonLocationLeft:
-            (musicPlayer.currentPlaybackTime > 2) ? [musicPlayer skipToBeginning] : [musicPlayer skipToPreviousItem];
-            [musicPlayer play];
-            
-            //Set the current song to the previous song if we skip to previous item
-            if (musicPlayer.currentPlaybackTime < 2) {
-                self.currentSongIndex -= 1;
-                //The first song's previous song is the last song
-                if (self.currentSongIndex < 0) {
-                    self.currentSongIndex = self.songs.count - 1;
-                }
-            }
-            
-            [self resetNowPlayingView];
-            break;
-        // Fastforward Button Pressed
-        case ICScrollWheelButtonLocationRight:
-            [musicPlayer skipToNextItem];
-            [musicPlayer play];
-            
-            //Set the current song to the next song
-            self.currentSongIndex++;
-            self.currentSongIndex %= self.songs.count;
-            
-            [self resetNowPlayingView];
-            break;
-        // Select Button Pressed
-        case ICScrollWheelButtonLocationCenter:
-            break;
-        default:
-            break;
-    }
-}
+//- (void)scrollWheel:(ICScrollWheelView *)scrollWheel pressedButtonAtLocation:(ICScrollWheelButtonLocation)location
+//{
+//    MPMusicPlayerController *musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
+//    //TODO: Code unification
+//    switch (location) {
+//        // Menu Button Pressed
+//        case ICScrollWheelButtonLocationTop:
+//            //Stop the timer
+//            [self.updateTimer invalidate];
+//            self.updateTimer = nil;
+//            
+//            //Change Views
+//            if([self.navigationController.viewControllers count] > 1){
+//                [self.navigationController popViewControllerAnimated:YES];
+//            }
+//            break;
+//        // Play/Pause Button Pressed
+//        case ICScrollWheelButtonLocationBottom:
+//            [musicPlayer playbackState] == MPMusicPlaybackStatePlaying ? [musicPlayer pause] : [musicPlayer play];
+//            break;
+//        // Rewind Button Pressed
+//        case ICScrollWheelButtonLocationLeft:
+//            (musicPlayer.currentPlaybackTime > 2) ? [musicPlayer skipToBeginning] : [musicPlayer skipToPreviousItem];
+//            [musicPlayer play];
+//            
+//            //Set the current song to the previous song if we skip to previous item
+//            if (musicPlayer.currentPlaybackTime < 2) {
+//                self.currentSongIndex -= 1;
+//                //The first song's previous song is the last song
+//                if (self.currentSongIndex < 0) {
+//                    self.currentSongIndex = self.songs.count - 1;
+//                }
+//            }
+//            
+//            [self resetNowPlayingView];
+//            break;
+//        // Fastforward Button Pressed
+//        case ICScrollWheelButtonLocationRight:
+//            [musicPlayer skipToNextItem];
+//            [musicPlayer play];
+//            
+//            //Set the current song to the next song
+//            self.currentSongIndex++;
+//            self.currentSongIndex %= self.songs.count;
+//            
+//            [self resetNowPlayingView];
+//            break;
+//        // Select Button Pressed
+//        case ICScrollWheelButtonLocationCenter:
+//            break;
+//        default:
+//            break;
+//    }
+//}
 
 - (void)scrollWheelPressedTopButton:(ICScrollWheelView *)scrollWheel
 {
@@ -115,8 +115,12 @@
 
 - (void)resetNowPlayingView {
     MPMusicPlayerController *musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
+    
     self.nowPlayingItem = musicPlayer.nowPlayingItem;
     ICNowPlayingView *view = (ICNowPlayingView *)self.view;
+    
+    // Update UILabels
+    
     view.songTitle.text = [self.nowPlayingItem valueForProperty:MPMediaItemPropertyTitle];
     view.artist.text = [self.nowPlayingItem valueForProperty:MPMediaItemPropertyArtist];
     view.tracksCounter.text = [NSString stringWithFormat:@"%d of %d", self.currentSongIndex + 1, self.songs.count];  //Note currentSongIndex is zero based -> index 0 = song number 1
@@ -138,7 +142,10 @@
     
     ICNowPlayingView *view = (ICNowPlayingView *)self.view;
     self.timeCurrentSongPlayed = [musicPlayer currentPlaybackTime];
-    view.progressView.progress = self.timeCurrentSongPlayed / self.songDuration;
+    
+    // Update progress bar 
+    
+    view.progressView.progress = self.songDuration ? self.timeCurrentSongPlayed / self.songDuration : 0;
     view.timeThusFar.text = [self formattedTimedFromTimeInSeconds:self.timeCurrentSongPlayed];
     view.timeRemaining.text = [self formattedTimedFromTimeInSeconds:self.songDuration - self.timeCurrentSongPlayed];
 }
@@ -147,6 +154,13 @@
     int minutes = seconds / 60;
     int adjustedSeconds = (int)seconds % 60;
     return [NSString stringWithFormat:@"%d:%02d",minutes,adjustedSeconds];
+}
+
+#pragma mark - Notifications
+
+- (void)nowPlayingItemDidChange:(NSNotification *)notification
+{
+    [self updateNowPlayingView];
 }
 
 # pragma mark view life cycle
@@ -170,7 +184,21 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    // Configure click wheel
+    
     [ICIPodViewController sharedIpod].scrollWheel.rotationTriggerSize = 10;
+    
+    // Register for notifiations
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(nowPlayingItemDidChange) name:MPMusicPlayerControllerNowPlayingItemDidChangeNotification object:[MPMusicPlayerController iPodMusicPlayer]];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    // Remove observer from notification center
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:MPMusicPlayerControllerNowPlayingItemDidChangeNotification object:[MPMusicPlayerController iPodMusicPlayer]];
 }
 
 - (void)viewDidUnload
