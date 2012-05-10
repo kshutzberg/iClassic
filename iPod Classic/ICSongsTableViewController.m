@@ -22,7 +22,7 @@
         [_songs release];
         _songs = [songs retain];
         
-        if([songs count] && ![MPMusicPlayerController iPodMusicPlayer].nowPlayingItem){
+        if([songs count]){ //&& ![MPMusicPlayerController iPodMusicPlayer].nowPlayingItem){
             MPMediaItemCollection *songsCollection = [MPMediaItemCollection collectionWithItems:songs];
             [[MPMusicPlayerController iPodMusicPlayer] setQueueWithItemCollection:songsCollection];
         }
