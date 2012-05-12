@@ -195,6 +195,9 @@ static ICIPodViewController *sharedIpod = nil;
     [self.tableView removeFromSuperview];
     self.tableView = nil;
     [self.view insertSubview:self.screenNavigationController.view belowSubview:self.iPodView];
+    
+    //Turn off shuffle mode!
+    [[MPMusicPlayerController iPodMusicPlayer] setShuffleMode:MPMusicShuffleModeOff];
 }
 
 - (void)viewDidLoad

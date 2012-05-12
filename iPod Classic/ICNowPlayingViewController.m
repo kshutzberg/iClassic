@@ -14,7 +14,6 @@
 
 - (void)updateNowPlayingView;
 
-
 @property (nonatomic, retain) MPMediaItem *nowPlayingItem;
 @property (nonatomic, retain) NSTimer *updateTimer;
 @property (nonatomic, assign) float timeCurrentSongPlayed;
@@ -27,8 +26,7 @@
 
 @implementation ICNowPlayingViewController
 
-@synthesize updateTimer = _updateTimer, timeCurrentSongPlayed = _timeCurrentSongPlayed, songDuration = _songDuration, songs = _songs,
-            currentSongIndex = _currentSongIndex, nowPlayingItem = _nowPlayingItem;
+@synthesize updateTimer = _updateTimer, timeCurrentSongPlayed = _timeCurrentSongPlayed, songDuration = _songDuration, songs = _songs,nowPlayingItem = _nowPlayingItem;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -120,10 +118,9 @@
     ICNowPlayingView *view = (ICNowPlayingView *)self.view;
     
     // Update UILabels
-    
     view.songTitle.text = [self.nowPlayingItem valueForProperty:MPMediaItemPropertyTitle];
     view.artist.text = [self.nowPlayingItem valueForProperty:MPMediaItemPropertyArtist];
-    view.tracksCounter.text = [NSString stringWithFormat:@"%d of %d", self.currentSongIndex + 1, self.songs.count];  //Note currentSongIndex is zero based -> index 0 = song number 1
+    view.tracksCounter.text = [NSString stringWithFormat:@"%d of %d", [musicPlayer indexOfNowPlayingItem] + 1, self.songs.count];  //Note the index is zero based -> index 0 = song number 1
     NSNumber *songLength = [self.nowPlayingItem valueForProperty:MPMediaItemPropertyPlaybackDuration];
     self.songDuration = [songLength floatValue];
     self.timeCurrentSongPlayed = 0;
@@ -131,20 +128,11 @@
 
 #pragma mark helpers
 - (void)updateNowPlayingView {
-    MPMusicPlayerController *musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
-    MPMediaItem *currentPlayingItem = musicPlayer.nowPlayingItem;
-    //if the song has changed naturally we must detect and update the now playing view
-    if (![self.nowPlayingItem isEqual:currentPlayingItem]) { 
-        self.currentSongIndex++;
-        self.currentSongIndex %= self.songs.count;
-        [self resetNowPlayingView];
-    }
-    
+    MPMusicPlayerController *musicPlayer = [MPMusicPlayerController iPodMusicPlayer];    
     ICNowPlayingView *view = (ICNowPlayingView *)self.view;
     self.timeCurrentSongPlayed = [musicPlayer currentPlaybackTime];
     
     // Update progress bar 
-    
     view.progressView.progress = self.songDuration ? self.timeCurrentSongPlayed / self.songDuration : 0;
     view.timeThusFar.text = [self formattedTimedFromTimeInSeconds:self.timeCurrentSongPlayed];
     view.timeRemaining.text = [self formattedTimedFromTimeInSeconds:self.songDuration - self.timeCurrentSongPlayed];
@@ -160,7 +148,7 @@
 
 - (void)nowPlayingItemDidChange:(NSNotification *)notification
 {
-    [self updateNowPlayingView];
+    [self resetNowPlayingView];
 }
 
 # pragma mark view life cycle
@@ -190,15 +178,17 @@
     [ICIPodViewController sharedIpod].scrollWheel.rotationTriggerSize = 10;
     
     // Register for notifiations
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(nowPlayingItemDidChange) name:MPMusicPlayerControllerNowPlayingItemDidChangeNotification object:[MPMusicPlayerController iPodMusicPlayer]];
+    MPMusicPlayerController *musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(nowPlayingItemDidChange:) name:MPMusicPlayerControllerNowPlayingItemDidChangeNotification object:musicPlayer];
+    [musicPlayer beginGeneratingPlaybackNotifications];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     // Remove observer from notification center
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:MPMusicPlayerControllerNowPlayingItemDidChangeNotification object:[MPMusicPlayerController iPodMusicPlayer]];
+    MPMusicPlayerController *musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:MPMusicPlayerControllerNowPlayingItemDidChangeNotification object:musicPlayer];
+    [musicPlayer endGeneratingPlaybackNotifications];
 }
 
 - (void)viewDidUnload

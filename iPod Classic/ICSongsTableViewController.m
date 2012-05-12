@@ -90,7 +90,6 @@
     //Push the now-playing view controller
     ICNowPlayingViewController *nowPlayingTVC = [self.storyboard instantiateViewControllerWithIdentifier:@"NowPlayingTVC"];
     nowPlayingTVC.songs = self.songs;
-    nowPlayingTVC.currentSongIndex = indexPath.row;
     [self.navigationController pushViewController:nowPlayingTVC animated:YES];
     
 }
