@@ -12,13 +12,15 @@
 
 #import "ICTableViewController.h"
 #import "ICSongsTableViewController.h"
-
+#import "MPMediaPlayerExtraData.h"
 
 @interface ICIPodViewController ()
 
 @property (nonatomic, assign) ICNavigationController *screenNavigationController;
 
 @property (nonatomic, assign) IBOutlet UITableView *tableView;  // Set as a placeholder for the child view controller
+
+- (void)countSongsInCurrentPlaylist;
 
 @end
 
@@ -198,6 +200,25 @@ static ICIPodViewController *sharedIpod = nil;
     
     //Turn off shuffle mode!
     [[MPMusicPlayerController iPodMusicPlayer] setShuffleMode:MPMusicShuffleModeOff];
+//    [self countSongsInCurrentPlaylist];
+}
+
+- (void)countSongsInCurrentPlaylist {
+    NSUInteger count = 0;
+    MPMusicPlayerController *player = [MPMusicPlayerController iPodMusicPlayer];
+    MPMediaItem *firstItem = [player nowPlayingItem];
+    
+    MPMediaItem *currentItem = nil;
+    
+    
+    while (![firstItem isEqual:currentItem]) {
+        [player skipToNextItem];
+        currentItem = [player nowPlayingItem];
+        count++;
+    }
+ 
+    MPMediaPlayerExtraData *data = [MPMediaPlayerExtraData sharedExtraData];
+    data.collectionCount = count;
 }
 
 - (void)viewDidLoad

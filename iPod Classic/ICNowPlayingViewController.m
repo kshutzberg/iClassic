@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 Stanford University. All rights reserved.
 //
 #import <MediaPlayer/MediaPlayer.h>
+#import "MPMediaPlayerExtraData.h"
 #import "ICNowPlayingViewController.h"
 #import "ICNowPlayingView.h"
 #import "ICIPodViewController.h"
@@ -14,7 +15,6 @@
 
 - (void)updateNowPlayingView;
 
-@property (nonatomic, retain) MPMediaItem *nowPlayingItem;
 @property (nonatomic, retain) NSTimer *updateTimer;
 @property (nonatomic, assign) float timeCurrentSongPlayed;
 @property (nonatomic, assign) float songDuration;
@@ -26,7 +26,7 @@
 
 @implementation ICNowPlayingViewController
 
-@synthesize updateTimer = _updateTimer, timeCurrentSongPlayed = _timeCurrentSongPlayed, songDuration = _songDuration, songs = _songs,nowPlayingItem = _nowPlayingItem;
+@synthesize updateTimer = _updateTimer, timeCurrentSongPlayed = _timeCurrentSongPlayed, songDuration = _songDuration;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,61 +38,6 @@
 }
 
 #pragma mark Scroll wheel delegate
-
-//- (void)scrollWheel:(ICScrollWheelView *)scrollWheel pressedButtonAtLocation:(ICScrollWheelButtonLocation)location
-//{
-//    MPMusicPlayerController *musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
-//    //TODO: Code unification
-//    switch (location) {
-//        // Menu Button Pressed
-//        case ICScrollWheelButtonLocationTop:
-//            //Stop the timer
-//            [self.updateTimer invalidate];
-//            self.updateTimer = nil;
-//            
-//            //Change Views
-//            if([self.navigationController.viewControllers count] > 1){
-//                [self.navigationController popViewControllerAnimated:YES];
-//            }
-//            break;
-//        // Play/Pause Button Pressed
-//        case ICScrollWheelButtonLocationBottom:
-//            [musicPlayer playbackState] == MPMusicPlaybackStatePlaying ? [musicPlayer pause] : [musicPlayer play];
-//            break;
-//        // Rewind Button Pressed
-//        case ICScrollWheelButtonLocationLeft:
-//            (musicPlayer.currentPlaybackTime > 2) ? [musicPlayer skipToBeginning] : [musicPlayer skipToPreviousItem];
-//            [musicPlayer play];
-//            
-//            //Set the current song to the previous song if we skip to previous item
-//            if (musicPlayer.currentPlaybackTime < 2) {
-//                self.currentSongIndex -= 1;
-//                //The first song's previous song is the last song
-//                if (self.currentSongIndex < 0) {
-//                    self.currentSongIndex = self.songs.count - 1;
-//                }
-//            }
-//            
-//            [self resetNowPlayingView];
-//            break;
-//        // Fastforward Button Pressed
-//        case ICScrollWheelButtonLocationRight:
-//            [musicPlayer skipToNextItem];
-//            [musicPlayer play];
-//            
-//            //Set the current song to the next song
-//            self.currentSongIndex++;
-//            self.currentSongIndex %= self.songs.count;
-//            
-//            [self resetNowPlayingView];
-//            break;
-//        // Select Button Pressed
-//        case ICScrollWheelButtonLocationCenter:
-//            break;
-//        default:
-//            break;
-//    }
-//}
 
 - (void)scrollWheelPressedTopButton:(ICScrollWheelView *)scrollWheel
 {
@@ -114,14 +59,21 @@
 - (void)resetNowPlayingView {
     MPMusicPlayerController *musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
     
-    self.nowPlayingItem = musicPlayer.nowPlayingItem;
+    MPMediaItem *nowPlayingItem = musicPlayer.nowPlayingItem;
     ICNowPlayingView *view = (ICNowPlayingView *)self.view;
     
     // Update UILabels
-    view.songTitle.text = [self.nowPlayingItem valueForProperty:MPMediaItemPropertyTitle];
-    view.artist.text = [self.nowPlayingItem valueForProperty:MPMediaItemPropertyArtist];
-    view.tracksCounter.text = [NSString stringWithFormat:@"%d of %d", [musicPlayer indexOfNowPlayingItem] + 1, self.songs.count];  //Note the index is zero based -> index 0 = song number 1
-    NSNumber *songLength = [self.nowPlayingItem valueForProperty:MPMediaItemPropertyPlaybackDuration];
+    NSUInteger numSongs = [[MPMediaPlayerExtraData sharedExtraData] collectionCount];
+    
+    view.songTitle.text = [nowPlayingItem valueForProperty:MPMediaItemPropertyTitle];
+    view.artist.text = [nowPlayingItem valueForProperty:MPMediaItemPropertyArtist];
+    if (numSongs != 0) {
+        view.tracksCounter.text = [NSString stringWithFormat:@"%d of %d", [musicPlayer indexOfNowPlayingItem] + 1, numSongs];  //Note the index is zero based -> index 0 = song number 1
+
+    } else {
+        view.tracksCounter.text = @"";
+    }
+    NSNumber *songLength = [nowPlayingItem valueForProperty:MPMediaItemPropertyPlaybackDuration];
     self.songDuration = [songLength floatValue];
     self.timeCurrentSongPlayed = 0;
 }

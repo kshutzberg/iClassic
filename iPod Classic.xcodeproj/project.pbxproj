@@ -38,6 +38,7 @@
 		9A360F0C155876AB00D95CFC /* DiamondPositionTracker.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A360F09155876AB00D95CFC /* DiamondPositionTracker.png */; };
 		9A360F0D155876AB00D95CFC /* PlaybarEmpty.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A360F0A155876AB00D95CFC /* PlaybarEmpty.png */; };
 		9A360F0E155876AB00D95CFC /* Playing Now.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A360F0B155876AB00D95CFC /* Playing Now.png */; };
+		9A983ED0155EED3600014BAD /* MPMediaPlayerExtraData.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A983ECF155EED3500014BAD /* MPMediaPlayerExtraData.m */; };
 		ECE31CF1154F941000896711 /* Icon_iPhone_4.png in Resources */ = {isa = PBXBuildFile; fileRef = ECE31CF0154F941000896711 /* Icon_iPhone_4.png */; };
 /* End PBXBuildFile section */
 
@@ -94,6 +95,8 @@
 		9A360F09155876AB00D95CFC /* DiamondPositionTracker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DiamondPositionTracker.png; sourceTree = "<group>"; };
 		9A360F0A155876AB00D95CFC /* PlaybarEmpty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PlaybarEmpty.png; sourceTree = "<group>"; };
 		9A360F0B155876AB00D95CFC /* Playing Now.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Playing Now.png"; sourceTree = "<group>"; };
+		9A983ECE155EED3500014BAD /* MPMediaPlayerExtraData.h */ = {isa = PBXFileReference; fileEncoding = 4; path = MPMediaPlayerExtraData.h; sourceTree = "<group>"; };
+		9A983ECF155EED3500014BAD /* MPMediaPlayerExtraData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPMediaPlayerExtraData.m; sourceTree = "<group>"; };
 		9AE8C35B155916FE00602F07 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		9AE8C35E155918AE00602F07 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		ECE31CF0154F941000896711 /* Icon_iPhone_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon_iPhone_4.png; path = ../Icon_iPhone_4.png; sourceTree = "<group>"; };
@@ -224,6 +227,8 @@
 		0A9154F5154F54D600513C69 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				9A983ECE155EED3500014BAD /* MPMediaPlayerExtraData.h */,
+				9A983ECF155EED3500014BAD /* MPMediaPlayerExtraData.m */,
 				0A9154DA154F544500513C69 /* ICAppDelegate.h */,
 				0A9154DB154F544500513C69 /* ICAppDelegate.m */,
 				0A9154DD154F544500513C69 /* MainStoryboard.storyboard */,
@@ -345,6 +350,7 @@
 				0A0CB40F15559B78009D5924 /* ICArtistsTableViewController.m in Sources */,
 				0A0CB412155741B7009D5924 /* ICMainTableViewController.m in Sources */,
 				9A06E52D155998F100DFC6AD /* ICNowPlayingProgressView.m in Sources */,
+				9A983ED0155EED3600014BAD /* MPMediaPlayerExtraData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,7 +11,4 @@
 
 @interface ICNowPlayingViewController : UIViewController <ICScreenViewController>
 
-//These public attributes are set by ICSongsTableViewController
-@property (nonatomic, assign) NSArray *songs; 
-
 @end

@@ -9,6 +9,7 @@
 #import "ICSongsTableViewController.h"
 #import "ICNowPlayingViewController.h"
 #import "Colors.h"
+#import "MPMediaPlayerExtraData.h"
 
 @implementation ICSongsTableViewController
 @synthesize songs = _songs;
@@ -25,6 +26,9 @@
         if([songs count]){ //&& ![MPMusicPlayerController iPodMusicPlayer].nowPlayingItem){
             MPMediaItemCollection *songsCollection = [MPMediaItemCollection collectionWithItems:songs];
             [[MPMusicPlayerController iPodMusicPlayer] setQueueWithItemCollection:songsCollection];
+            MPMediaPlayerExtraData *data = [MPMediaPlayerExtraData sharedExtraData];
+            data.collectionCount = songs.count;
+            
         }
         
         [self.tableView reloadData];
@@ -89,7 +93,6 @@
     
     //Push the now-playing view controller
     ICNowPlayingViewController *nowPlayingTVC = [self.storyboard instantiateViewControllerWithIdentifier:@"NowPlayingTVC"];
-    nowPlayingTVC.songs = self.songs;
     [self.navigationController pushViewController:nowPlayingTVC animated:YES];
     
 }
