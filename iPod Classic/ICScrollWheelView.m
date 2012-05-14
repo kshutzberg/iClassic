@@ -12,9 +12,20 @@
 #define OUTER_RADIUS        ( MAX(self.bounds.size.height, self.bounds.size.width) / 2.0f )
 #define INNER_RADIUS        ((30.0f / 107.0f) * MIN(self.bounds.size.height, self.bounds.size.width) / 2.0f )
 
+@interface ICScrollWheelView ()
+
+@property (nonatomic, assign) CGRect leftSector;
+@property (nonatomic, assign) CGRect rightSector;
+@property (nonatomic, assign) CGRect topSector;
+@property (nonatomic, assign) CGRect bottomSector;
+@property (nonatomic, assign) CGRect middleSector;
+
+- (void)setUp;
+
+@end
+
 @implementation ICScrollWheelView
-@synthesize delegate = _delegate;
-@synthesize rotationTriggerSize = _rotationTriggerSize;
+@synthesize delegate = _delegate, rotationTriggerSize = _rotationTriggerSize, leftSector, rightSector, topSector, bottomSector, middleSector;
 
 - (void)awakeFromNib
 {
@@ -40,6 +51,8 @@
     wheelGR.outerRadius = OUTER_RADIUS;
     [self addGestureRecognizer:wheelGR];
     [wheelGR release];
+    
+    [self setUp];
 }
 
 #pragma mark - Touch Handling
@@ -55,30 +68,20 @@
 
 - (void)pressed:(UILongPressGestureRecognizer *)recognizer {
     CGPoint location = [recognizer locationInView:self];
-    CGFloat height  = self.bounds.size.height;
-    CGFloat width   = self.bounds.size.width;
-    
-    CGFloat sectorWidth = width / 3.5;
-    CGFloat sectorHeight = height / 3.5;
-    
-    CGFloat sectorYOffset = (height - sectorHeight)/2;
-    
-    CGRect leftSector       = CGRectMake(0, sectorYOffset, sectorWidth, sectorHeight);
-    CGRect rightSector      = CGRectMake(width - sectorWidth, sectorYOffset, sectorWidth, sectorHeight);
     
     if (recognizer.state == UIGestureRecognizerStateEnded) {
         if ([self.delegate respondsToSelector:@selector(scrollWheelReleasedLeftOrRightButton:)]) {
             [self.delegate scrollWheelReleasedLeftOrRightButton:self];
         }
     } else {
-        if(CGRectContainsPoint(leftSector, location) && [self.delegate respondsToSelector:@selector(scrollWheelPressedAndHeldLeftButton:)]){
+        if(CGRectContainsPoint(self.leftSector, location) && [self.delegate respondsToSelector:@selector(scrollWheelPressedAndHeldLeftButton:)]){
             if (recognizer.state == UIGestureRecognizerStateEnded) {
                 
             } else {
                 [self.delegate scrollWheelPressedAndHeldLeftButton:self];
             }
         }
-        if(CGRectContainsPoint(rightSector, location) && [self.delegate respondsToSelector:@selector(scrollWheelPressedAndHeldRightButton:)]){
+        if(CGRectContainsPoint(self.rightSector, location) && [self.delegate respondsToSelector:@selector(scrollWheelPressedAndHeldRightButton:)]){
             [self.delegate scrollWheelPressedAndHeldRightButton:self];
         }
     }
@@ -87,55 +90,32 @@
 - (void)tapped:(UITapGestureRecognizer *)recognizer
 {
     CGPoint location = [recognizer locationInView:self];
-    CGFloat height  = self.bounds.size.height;
-    CGFloat width   = self.bounds.size.width;
-    
-    // Change these two values to adjust the sector size
-    
-    CGFloat sectorWidth = width / 3.5;
-    CGFloat sectorHeight = height / 3.5;
-    
-    // Use these two values for the position to center horizontally/vertically
-    
-    CGFloat sectorXOffset = (width - sectorWidth)/2;
-    CGFloat sectorYOffset = (height - sectorHeight)/2;
-    
-    CGRect leftSector       = CGRectMake(0, sectorYOffset, sectorWidth, sectorHeight);
-    CGRect rightSector      = CGRectMake(width - sectorWidth, sectorYOffset, sectorWidth, sectorHeight);
-    CGRect topSector        = CGRectMake(sectorXOffset, 0, sectorWidth, sectorHeight);
-    CGRect bottomSector     = CGRectMake(sectorXOffset, height - sectorHeight, sectorWidth, sectorHeight);
-    
-    CGRect middleCector     = CGRectMake(sectorXOffset, sectorYOffset, sectorWidth, sectorHeight);
-    
-    
-    
-    //if(![self.delegate respondsToSelector:@selector(scrollWheel:pressedButtonAtLocation:)])return;
     
     // Handle the touch
     
-    if(CGRectContainsPoint(topSector, location) && [self.delegate respondsToSelector:@selector(scrollWheelPressedTopButton:)]){
+    if(CGRectContainsPoint(self.topSector, location) && [self.delegate respondsToSelector:@selector(scrollWheelPressedTopButton:)]){
         [self.delegate scrollWheelPressedTopButton:self];
     }
-    if(CGRectContainsPoint(bottomSector, location) && [self.delegate respondsToSelector:@selector(scrollWheelPressedBottomButton:)]){
+    if(CGRectContainsPoint(self.bottomSector, location) && [self.delegate respondsToSelector:@selector(scrollWheelPressedBottomButton:)]){
         //[self.delegate scrollWheel:self pressedButtonAtLocation:ICScrollWheelButtonLocationBottom];
         [self.delegate scrollWheelPressedBottomButton:self];
     }
-    if(CGRectContainsPoint(leftSector, location) && [self.delegate respondsToSelector:@selector(scrollWheelPressedLeftButton:)]){
+    if(CGRectContainsPoint(self.leftSector, location) && [self.delegate respondsToSelector:@selector(scrollWheelPressedLeftButton:)]){
         //[self.delegate scrollWheel:self pressedButtonAtLocation:ICScrollWheelButtonLocationLeft];
         [self.delegate scrollWheelPressedLeftButton:self];
     }
-    if(CGRectContainsPoint(rightSector, location) && [self.delegate respondsToSelector:@selector(scrollWheelPressedRightButton:)]){
+    if(CGRectContainsPoint(self.rightSector, location) && [self.delegate respondsToSelector:@selector(scrollWheelPressedRightButton:)]){
         //[self.delegate scrollWheel:self pressedButtonAtLocation:ICScrollWheelButtonLocationRight];
         [self.delegate scrollWheelPressedRightButton:self];
     }
-    if(CGRectContainsPoint(middleCector, location)
+    if(CGRectContainsPoint(self.middleSector, location)
        && [self.delegate respondsToSelector:@selector(scrollWheelPressedCenterButton:)]
        && recognizer.numberOfTapsRequired == 1)
     {
         //[self.delegate scrollWheel:self pressedButtonAtLocation:ICScrollWheelButtonLocationCenter];
         [self.delegate scrollWheelPressedCenterButton:self];
     }
-    if(CGRectContainsPoint(middleCector, location)
+    if(CGRectContainsPoint(self.middleSector, location)
        && [self.delegate respondsToSelector:@selector(scrollWheelDoubleTappedCenterButton:)]
        && recognizer.numberOfTapsRequired == 2)
     {
@@ -162,6 +142,28 @@
     }
 }
 
+
+- (void)setUp {
+    CGFloat height  = self.bounds.size.height;
+    CGFloat width   = self.bounds.size.width;
+    
+    // Change these two values to adjust the sector size
+    
+    CGFloat sectorWidth = width / 3.5;
+    CGFloat sectorHeight = height / 3.5;
+    
+    // Use these two values for the position to center horizontally/vertically
+    
+    CGFloat sectorXOffset = (width - sectorWidth)/2;
+    CGFloat sectorYOffset = (height - sectorHeight)/2;
+    
+    self.leftSector       = CGRectMake(0, sectorYOffset, sectorWidth, sectorHeight);
+    self.rightSector      = CGRectMake(width - sectorWidth, sectorYOffset, sectorWidth, sectorHeight);
+    self.topSector        = CGRectMake(sectorXOffset, 0, sectorWidth, sectorHeight);
+    self.bottomSector     = CGRectMake(sectorXOffset, height - sectorHeight, sectorWidth, sectorHeight);
+    self.middleSector     = CGRectMake(sectorXOffset, sectorYOffset, sectorWidth, sectorHeight);
+    
+}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
