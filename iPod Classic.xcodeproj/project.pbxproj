@@ -95,7 +95,7 @@
 		9A360F09155876AB00D95CFC /* DiamondPositionTracker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DiamondPositionTracker.png; sourceTree = "<group>"; };
 		9A360F0A155876AB00D95CFC /* PlaybarEmpty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PlaybarEmpty.png; sourceTree = "<group>"; };
 		9A360F0B155876AB00D95CFC /* Playing Now.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Playing Now.png"; sourceTree = "<group>"; };
-		9A983ECE155EED3500014BAD /* MPMediaPlayerExtraData.h */ = {isa = PBXFileReference; fileEncoding = 4; path = MPMediaPlayerExtraData.h; sourceTree = "<group>"; };
+		9A983ECE155EED3500014BAD /* MPMediaPlayerExtraData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPMediaPlayerExtraData.h; sourceTree = "<group>"; };
 		9A983ECF155EED3500014BAD /* MPMediaPlayerExtraData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPMediaPlayerExtraData.m; sourceTree = "<group>"; };
 		9AE8C35B155916FE00602F07 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		9AE8C35E155918AE00602F07 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };

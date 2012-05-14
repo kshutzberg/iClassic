@@ -20,9 +20,15 @@
 {
     self.userInteractionEnabled = YES;
     
+    //Add a long tap gesture recognizer for fast forwarding and rewinding
+    
+    UILongPressGestureRecognizer *longPressGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(pressed:)];
+    [self addGestureRecognizer:longPressGR];
+    
     // Add a tap gesture recognizer for buttons
     
     UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
+    [tapGR requireGestureRecognizerToFail:longPressGR];
     [self addGestureRecognizer:tapGR];
     [tapGR release];
     
@@ -47,10 +53,40 @@
 
 #pragma mark - Gesture Handling
 
+- (void)pressed:(UILongPressGestureRecognizer *)recognizer {
+    CGPoint location = [recognizer locationInView:self];
+    CGFloat height  = self.bounds.size.height;
+    CGFloat width   = self.bounds.size.width;
+    
+    CGFloat sectorWidth = width / 3.5;
+    CGFloat sectorHeight = height / 3.5;
+    
+    CGFloat sectorYOffset = (height - sectorHeight)/2;
+    
+    CGRect leftSector       = CGRectMake(0, sectorYOffset, sectorWidth, sectorHeight);
+    CGRect rightSector      = CGRectMake(width - sectorWidth, sectorYOffset, sectorWidth, sectorHeight);
+    
+    if (recognizer.state == UIGestureRecognizerStateEnded) {
+        if ([self.delegate respondsToSelector:@selector(scrollWheelReleasedLeftOrRightButton:)]) {
+            [self.delegate scrollWheelReleasedLeftOrRightButton:self];
+        }
+    } else {
+        if(CGRectContainsPoint(leftSector, location) && [self.delegate respondsToSelector:@selector(scrollWheelPressedAndHeldLeftButton:)]){
+            if (recognizer.state == UIGestureRecognizerStateEnded) {
+                
+            } else {
+                [self.delegate scrollWheelPressedAndHeldLeftButton:self];
+            }
+        }
+        if(CGRectContainsPoint(rightSector, location) && [self.delegate respondsToSelector:@selector(scrollWheelPressedAndHeldRightButton:)]){
+            [self.delegate scrollWheelPressedAndHeldRightButton:self];
+        }
+    }
+}
+                                                 
 - (void)tapped:(UITapGestureRecognizer *)recognizer
 {
     CGPoint location = [recognizer locationInView:self];
-    
     CGFloat height  = self.bounds.size.height;
     CGFloat width   = self.bounds.size.width;
     
@@ -78,7 +114,6 @@
     // Handle the touch
     
     if(CGRectContainsPoint(topSector, location) && [self.delegate respondsToSelector:@selector(scrollWheelPressedTopButton:)]){
-        //[self.delegate scrollWheel:self pressedButtonAtLocation:ICScrollWheelButtonLocationTop];
         [self.delegate scrollWheelPressedTopButton:self];
     }
     if(CGRectContainsPoint(bottomSector, location) && [self.delegate respondsToSelector:@selector(scrollWheelPressedBottomButton:)]){
@@ -106,7 +141,7 @@
     {
         [self.delegate scrollWheelDoubleTappedCenterButton:self];
     }
-    
+
 }
 
 - (void)spin:(ICWheelGestureRecognizer *)recognizer

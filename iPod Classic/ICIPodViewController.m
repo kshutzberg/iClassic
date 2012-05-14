@@ -168,6 +168,21 @@ static ICIPodViewController *sharedIpod = nil;
     }
 }
 
+- (void)scrollWheelPressedAndHeldLeftButton:(ICScrollWheelView *)scrollWheel {
+    MPMusicPlayerController *musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
+    [musicPlayer beginSeekingBackward];
+}
+
+- (void)scrollWheelPressedAndHeldRightButton:(ICScrollWheelView *)scrollWheel {
+    MPMusicPlayerController *musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
+    [musicPlayer beginSeekingForward];
+}
+
+- (void)scrollWheelReleasedLeftOrRightButton:(ICScrollWheelView *)scrollWheel {
+    MPMusicPlayerController *musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
+    [musicPlayer endSeeking];
+}
+
 #pragma mark - View controller life cycle
 
 

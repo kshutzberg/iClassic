@@ -385,6 +385,54 @@
         <image name="Scroll Wheel.png" width="215" height="215"/>
         <image name="iPod Body.png" width="320" height="480"/>
     </resources>
+    <classes>
+        <class className="ICArtistsTableViewController" superclassName="ICTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ICArtistsTableViewController.h"/>
+        </class>
+        <class className="ICIPodViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ICIPodViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="iPodView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="scrollWheel" candidateClass="ICScrollWheelView"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="ICMainTableViewController" superclassName="ICTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ICMainTableViewController.h"/>
+        </class>
+        <class className="ICNowPlayingProgressView" superclassName="UIProgressView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ICNowPlayingProgressView.h"/>
+        </class>
+        <class className="ICNowPlayingView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ICNowPlayingView.h"/>
+            <relationships>
+                <relationship kind="outlet" name="artist" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="progressView" candidateClass="UIProgressView"/>
+                <relationship kind="outlet" name="songTitle" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="timeRemaining" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="timeThusFar" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="tracksCounter" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ICNowPlayingViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ICNowPlayingViewController.h"/>
+        </class>
+        <class className="ICPlaylistsTableViewController" superclassName="ICTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ICPlaylistsTableViewController.h"/>
+        </class>
+        <class className="ICScrollWheelView" superclassName="UIImageView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ICScrollWheelView.h"/>
+        </class>
+        <class className="ICSongsTableViewController" superclassName="ICTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ICSongsTableViewController.h"/>
+        </class>
+        <class className="ICTableView" superclassName="UITableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ICTableView.h"/>
+        </class>
+        <class className="ICTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ICTableViewController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

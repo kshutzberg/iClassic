@@ -26,8 +26,14 @@ typedef enum {
 
 - (void)scrollWheelPressedTopButton:(ICScrollWheelView *)scrollWheel;
 - (void)scrollWheelPressedBottomButton:(ICScrollWheelView *)scrollWheel;
+
 - (void)scrollWheelPressedLeftButton:(ICScrollWheelView *)scrollWheel;
+- (void)scrollWheelPressedAndHeldLeftButton:(ICScrollWheelView *)scrollWheel;
+
 - (void)scrollWheelPressedRightButton:(ICScrollWheelView *)scrollWheel;
+- (void)scrollWheelPressedAndHeldRightButton:(ICScrollWheelView *)scrollWheel;
+
+- (void)scrollWheelReleasedLeftOrRightButton:(ICScrollWheelView *)scrollWheel;
 
 - (void)scrollWheelPressedCenterButton:(ICScrollWheelView *)scrollWheel;
 - (void)scrollWheelDoubleTappedCenterButton:(ICScrollWheelView *)scrollWheel;
