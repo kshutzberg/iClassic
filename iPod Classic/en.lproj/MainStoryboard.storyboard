@@ -24,7 +24,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="scroll-wheel.png" id="8QH-5y-DvK" customClass="ICScrollWheelView">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="scroll-wheel2.png" id="8QH-5y-DvK" customClass="ICScrollWheelView">
                                 <rect key="frame" x="55" y="211" width="210" height="210"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -354,7 +354,7 @@
     </scenes>
     <resources>
         <image name="ipod-body.png" width="320" height="480"/>
-        <image name="scroll-wheel.png" width="430" height="430"/>
+        <image name="scroll-wheel2.png" width="430" height="430"/>
     </resources>
     <classes>
         <class className="ICArtistsTableViewController" superclassName="ICTableViewController">
