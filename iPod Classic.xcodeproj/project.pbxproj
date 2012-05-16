@@ -263,9 +263,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0A9154C6154F544500513C69 /* iPod Classic */ = {
+		0A9154C6154F544500513C69 /* Retro Music */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0A9154E5154F544500513C69 /* Build configuration list for PBXNativeTarget "iPod Classic" */;
+			buildConfigurationList = 0A9154E5154F544500513C69 /* Build configuration list for PBXNativeTarget "Retro Music" */;
 			buildPhases = (
 				0A9154C3154F544500513C69 /* Sources */,
 				0A9154C4154F544500513C69 /* Frameworks */,
@@ -275,7 +275,7 @@
 			);
 			dependencies = (
 			);
-			name = "iPod Classic";
+			name = "Retro Music";
 			productName = "iPod Classic";
 			productReference = 0A9154C7154F544500513C69 /* iPod Classic.app */;
 			productType = "com.apple.product-type.application";
@@ -302,7 +302,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0A9154C6154F544500513C69 /* iPod Classic */,
+				0A9154C6154F544500513C69 /* Retro Music */,
 			);
 		};
 /* End PBXProject section */
@@ -459,7 +459,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0A9154E5154F544500513C69 /* Build configuration list for PBXNativeTarget "iPod Classic" */ = {
+		0A9154E5154F544500513C69 /* Build configuration list for PBXNativeTarget "Retro Music" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0A9154E6154F544500513C69 /* Debug */,
