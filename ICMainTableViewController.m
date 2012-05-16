@@ -15,6 +15,10 @@
 #import "ICSongsTableViewController.h"
 #import "ICNowPlayingViewController.h"
 
+@interface ICMainTableViewController () < UIAlertViewDelegate >
+
+@end
+
 @implementation ICMainTableViewController
 
 #pragma mark - Navigation Logic
@@ -51,11 +55,23 @@
 
 - (void)showFeedback
 {
-    NSString *appID = @"527835521";
-    NSString *itunesPath = [NSString stringWithFormat:@"http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=%@&pageNumber=0&sortOrdering=1&type=Purple+Software&mt=8",appID];
-    NSURL *itunesURL = [NSURL URLWithString:itunesPath];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Give us feedback!" message:@"You are about to be redirected to the app store, so that you can write a review.  Your feedback is much appreciated! High five... you're awesome!" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Lets Go!", nil];
+    [alertView show];
+    [alertView release];
+}
 
-    [[UIApplication sharedApplication] openURL:itunesURL];
+#pragma mark - Alert View Deletate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex != alertView.cancelButtonIndex)
+    {
+        NSString *appID = @"527835521";
+        NSString *itunesPath = [NSString stringWithFormat:@"http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=%@&pageNumber=0&sortOrdering=1&type=Purple+Software&mt=8",appID];
+        NSURL *itunesURL = [NSURL URLWithString:itunesPath];
+        
+        [[UIApplication sharedApplication] openURL:itunesURL];
+    }
 }
 
 #pragma mark - Table view delegate
