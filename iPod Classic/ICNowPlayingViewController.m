@@ -56,6 +56,7 @@
     musicPlayer.volume += (degrees > 0) ? .06 : -.06;
 }
 
+
 - (void)resetNowPlayingView {
     MPMusicPlayerController *musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
     
@@ -65,12 +66,16 @@
     // Update UILabels
     NSUInteger numSongs = [[MPMediaPlayerExtraData sharedExtraData] collectionCount];
     
+    
     view.songTitle.text = [nowPlayingItem valueForProperty:MPMediaItemPropertyTitle];
     view.artist.text = [nowPlayingItem valueForProperty:MPMediaItemPropertyArtist];
+    
     if (numSongs != 0) {
         view.tracksCounter.text = [NSString stringWithFormat:@"%d of %d", [musicPlayer indexOfNowPlayingItem] + 1, numSongs];  //Note the index is zero based -> index 0 = song number 1
 
-    } else {
+    }
+    else
+    {
         view.tracksCounter.text = @"";
     }
     NSNumber *songLength = [nowPlayingItem valueForProperty:MPMediaItemPropertyPlaybackDuration];
