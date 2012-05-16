@@ -18,6 +18,7 @@
 		0A0CB40F15559B78009D5924 /* ICArtistsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A0CB40E15559B77009D5924 /* ICArtistsTableViewController.m */; };
 		0A0CB412155741B7009D5924 /* ICMainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A0CB411155741B7009D5924 /* ICMainTableViewController.m */; };
 		0A411EE015638F3800DD47E4 /* scroll-wheel2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A411EDF15638F3800DD47E4 /* scroll-wheel2.png */; };
+		0A411EE415638FFC00DD47E4 /* icon_114.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A411EE315638FFC00DD47E4 /* icon_114.png */; };
 		0A5C62D51552085C00E48AAA /* ICSongsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5C62D41552085C00E48AAA /* ICSongsTableViewController.m */; };
 		0A5C62D915526B0900E48AAA /* ICWheelGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5C62D815526B0900E48AAA /* ICWheelGestureRecognizer.m */; };
 		0A9154CC154F544500513C69 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A9154CB154F544500513C69 /* UIKit.framework */; };
@@ -67,6 +68,7 @@
 		0A0CB410155741B6009D5924 /* ICMainTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ICMainTableViewController.h; path = ../ICMainTableViewController.h; sourceTree = "<group>"; };
 		0A0CB411155741B7009D5924 /* ICMainTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ICMainTableViewController.m; path = ../ICMainTableViewController.m; sourceTree = "<group>"; };
 		0A411EDF15638F3800DD47E4 /* scroll-wheel2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scroll-wheel2.png"; sourceTree = "<group>"; };
+		0A411EE315638FFC00DD47E4 /* icon_114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_114.png; path = ../icon_114.png; sourceTree = "<group>"; };
 		0A5C62D31552085C00E48AAA /* ICSongsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICSongsTableViewController.h; sourceTree = "<group>"; };
 		0A5C62D41552085C00E48AAA /* ICSongsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICSongsTableViewController.m; sourceTree = "<group>"; };
 		0A5C62D715526B0900E48AAA /* ICWheelGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICWheelGestureRecognizer.h; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				ECE31CF0154F941000896711 /* Icon_iPhone_4.png */,
+				0A411EE315638FFC00DD47E4 /* icon_114.png */,
 			);
 			name = icons;
 			path = ..;
@@ -353,6 +356,7 @@
 				0A0A9019156387F1005E804D /* scroll-wheel.png in Resources */,
 				0A0A901B1563880E005E804D /* ipod-body.png in Resources */,
 				0A411EE015638F3800DD47E4 /* scroll-wheel2.png in Resources */,
+				0A411EE415638FFC00DD47E4 /* icon_114.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
