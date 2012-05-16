@@ -26,6 +26,7 @@
 
 - (void)selectRowAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated scrollPosition:(UITableViewScrollPosition)scrollPosition
 {
+    [self reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
     UITableViewCell *cell = [self cellForRowAtIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
@@ -43,6 +44,20 @@
     
     cell.contentView.backgroundColor = TABLE_COLOR;
     cell.backgroundColor = TABLE_COLOR;
+}
+
+- (UITableViewCell *)cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [super cellForRowAtIndexPath:indexPath];
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    BOOL isSelected = [[self indexPathForSelectedRow] isEqual:indexPath];
+    
+    cell.contentView.backgroundColor = isSelected ? TABLE_COLOR_SELECTED : TABLE_COLOR;
+    cell.backgroundColor = isSelected ? TABLE_COLOR_SELECTED : TABLE_COLOR;
+    
+    return cell;
 }
 
 
