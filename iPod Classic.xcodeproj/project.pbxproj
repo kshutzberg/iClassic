@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0A0A9019156387F1005E804D /* scroll-wheel.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A0A9018156387F1005E804D /* scroll-wheel.png */; };
-		0A0A901B1563880E005E804D /* ipod-body.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A0A901A1563880E005E804D /* ipod-body.png */; };
 		0A0CB3EA1554A2F2009D5924 /* ICNowPlayingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A0CB3E91554A2F1009D5924 /* ICNowPlayingView.m */; };
 		0A0CB3ED1554A30C009D5924 /* ICTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A0CB3EC1554A30C009D5924 /* ICTableView.m */; };
 		0A0CB3F21554A573009D5924 /* MPMediaItem+InformationAccessors.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A0CB3F11554A573009D5924 /* MPMediaItem+InformationAccessors.m */; };
@@ -17,8 +16,9 @@
 		0A0CB40C15559B5D009D5924 /* ICPlaylistsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A0CB40B15559B5C009D5924 /* ICPlaylistsTableViewController.m */; };
 		0A0CB40F15559B78009D5924 /* ICArtistsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A0CB40E15559B77009D5924 /* ICArtistsTableViewController.m */; };
 		0A0CB412155741B7009D5924 /* ICMainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A0CB411155741B7009D5924 /* ICMainTableViewController.m */; };
-		0A411EE015638F3800DD47E4 /* scroll-wheel2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A411EDF15638F3800DD47E4 /* scroll-wheel2.png */; };
 		0A411EE415638FFC00DD47E4 /* icon_114.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A411EE315638FFC00DD47E4 /* icon_114.png */; };
+		0A411EE61563912700DD47E4 /* scroll-wheel2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A411EE51563912700DD47E4 /* scroll-wheel2.png */; };
+		0A411EE81563926400DD47E4 /* ipod-body.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A411EE71563926400DD47E4 /* ipod-body.png */; };
 		0A5C62D51552085C00E48AAA /* ICSongsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5C62D41552085C00E48AAA /* ICSongsTableViewController.m */; };
 		0A5C62D915526B0900E48AAA /* ICWheelGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5C62D815526B0900E48AAA /* ICWheelGestureRecognizer.m */; };
 		0A9154CC154F544500513C69 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A9154CB154F544500513C69 /* UIKit.framework */; };
@@ -48,7 +48,6 @@
 
 /* Begin PBXFileReference section */
 		0A0A9018156387F1005E804D /* scroll-wheel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scroll-wheel.png"; sourceTree = "<group>"; };
-		0A0A901A1563880E005E804D /* ipod-body.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ipod-body.png"; sourceTree = "<group>"; };
 		0A0CB3A7155298C8009D5924 /* Colors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Colors.h; sourceTree = "<group>"; };
 		0A0CB3E81554A2F1009D5924 /* ICNowPlayingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICNowPlayingView.h; sourceTree = "<group>"; };
 		0A0CB3E91554A2F1009D5924 /* ICNowPlayingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICNowPlayingView.m; sourceTree = "<group>"; };
@@ -67,8 +66,9 @@
 		0A0CB40E15559B77009D5924 /* ICArtistsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICArtistsTableViewController.m; sourceTree = "<group>"; };
 		0A0CB410155741B6009D5924 /* ICMainTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ICMainTableViewController.h; path = ../ICMainTableViewController.h; sourceTree = "<group>"; };
 		0A0CB411155741B7009D5924 /* ICMainTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ICMainTableViewController.m; path = ../ICMainTableViewController.m; sourceTree = "<group>"; };
-		0A411EDF15638F3800DD47E4 /* scroll-wheel2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scroll-wheel2.png"; sourceTree = "<group>"; };
 		0A411EE315638FFC00DD47E4 /* icon_114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_114.png; path = ../icon_114.png; sourceTree = "<group>"; };
+		0A411EE51563912700DD47E4 /* scroll-wheel2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scroll-wheel2.png"; sourceTree = "<group>"; };
+		0A411EE71563926400DD47E4 /* ipod-body.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ipod-body.png"; sourceTree = "<group>"; };
 		0A5C62D31552085C00E48AAA /* ICSongsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICSongsTableViewController.h; sourceTree = "<group>"; };
 		0A5C62D41552085C00E48AAA /* ICSongsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICSongsTableViewController.m; sourceTree = "<group>"; };
 		0A5C62D715526B0900E48AAA /* ICWheelGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICWheelGestureRecognizer.h; sourceTree = "<group>"; };
@@ -140,9 +140,9 @@
 		0A0A900F15638787005E804D /* Trojan Horse */ = {
 			isa = PBXGroup;
 			children = (
-				0A0A901A1563880E005E804D /* ipod-body.png */,
+				0A411EE71563926400DD47E4 /* ipod-body.png */,
 				0A0A9018156387F1005E804D /* scroll-wheel.png */,
-				0A411EDF15638F3800DD47E4 /* scroll-wheel2.png */,
+				0A411EE51563912700DD47E4 /* scroll-wheel2.png */,
 			);
 			path = "Trojan Horse";
 			sourceTree = "<group>";
@@ -354,9 +354,9 @@
 				9A360F0D155876AB00D95CFC /* PlaybarEmpty.png in Resources */,
 				9A360F0E155876AB00D95CFC /* Playing Now.png in Resources */,
 				0A0A9019156387F1005E804D /* scroll-wheel.png in Resources */,
-				0A0A901B1563880E005E804D /* ipod-body.png in Resources */,
-				0A411EE015638F3800DD47E4 /* scroll-wheel2.png in Resources */,
 				0A411EE415638FFC00DD47E4 /* icon_114.png in Resources */,
+				0A411EE61563912700DD47E4 /* scroll-wheel2.png in Resources */,
+				0A411EE81563926400DD47E4 /* ipod-body.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,6 +439,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Julian Kevin Shutzberg";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -448,6 +449,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "FCE0DD1E-2731-4DC7-BE86-542C543BEA89";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
