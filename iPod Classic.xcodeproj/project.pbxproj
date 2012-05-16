@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A0A9019156387F1005E804D /* scroll-wheel.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A0A9018156387F1005E804D /* scroll-wheel.png */; };
+		0A0A901B1563880E005E804D /* ipod-body.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A0A901A1563880E005E804D /* ipod-body.png */; };
 		0A0CB3EA1554A2F2009D5924 /* ICNowPlayingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A0CB3E91554A2F1009D5924 /* ICNowPlayingView.m */; };
 		0A0CB3ED1554A30C009D5924 /* ICTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A0CB3EC1554A30C009D5924 /* ICTableView.m */; };
 		0A0CB3F21554A573009D5924 /* MPMediaItem+InformationAccessors.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A0CB3F11554A573009D5924 /* MPMediaItem+InformationAccessors.m */; };
@@ -43,6 +45,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A0A9018156387F1005E804D /* scroll-wheel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scroll-wheel.png"; sourceTree = "<group>"; };
+		0A0A901A1563880E005E804D /* ipod-body.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ipod-body.png"; sourceTree = "<group>"; };
 		0A0CB3A7155298C8009D5924 /* Colors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Colors.h; sourceTree = "<group>"; };
 		0A0CB3E81554A2F1009D5924 /* ICNowPlayingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICNowPlayingView.h; sourceTree = "<group>"; };
 		0A0CB3E91554A2F1009D5924 /* ICNowPlayingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICNowPlayingView.m; sourceTree = "<group>"; };
@@ -117,6 +121,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A0A900E1563876C005E804D /* iClassic Main UI Images */ = {
+			isa = PBXGroup;
+			children = (
+				0A9154EB154F54B000513C69 /* iPod_Body.png */,
+				0A9154E9154F54B000513C69 /* Glare Transparency Layer.png */,
+				0A9154EA154F54B000513C69 /* iPod Body Alternative.png */,
+				0A9154EC154F54B000513C69 /* iPod Body.png */,
+				0A9154ED154F54B000513C69 /* Scroll Wheel.png */,
+			);
+			name = "iClassic Main UI Images";
+			sourceTree = "<group>";
+		};
+		0A0A900F15638787005E804D /* Trojan Horse */ = {
+			isa = PBXGroup;
+			children = (
+				0A0A901A1563880E005E804D /* ipod-body.png */,
+				0A0A9018156387F1005E804D /* scroll-wheel.png */,
+			);
+			path = "Trojan Horse";
+			sourceTree = "<group>";
+		};
 		0A0CB3EE1554A31F009D5924 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -191,8 +216,7 @@
 			children = (
 				0A0CB3A7155298C8009D5924 /* Colors.h */,
 				0A9154F5154F54D600513C69 /* Classes */,
-				ECE31CEF154F93DF00896711 /* icons */,
-				0A9154E8154F54B000513C69 /* iPod iPhone PNGs */,
+				0A9154E8154F54B000513C69 /* Image */,
 				0A9154D2154F544500513C69 /* Supporting Files */,
 			);
 			path = "iPod Classic";
@@ -211,16 +235,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		0A9154E8154F54B000513C69 /* iPod iPhone PNGs */ = {
+		0A9154E8154F54B000513C69 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				0A0A900F15638787005E804D /* Trojan Horse */,
+				ECE31CEF154F93DF00896711 /* icons */,
 				9A360F08155876AB00D95CFC /* Play Now Elements */,
-				0A9154EB154F54B000513C69 /* iPod_Body.png */,
-				0A9154E9154F54B000513C69 /* Glare Transparency Layer.png */,
-				0A9154EA154F54B000513C69 /* iPod Body Alternative.png */,
-				0A9154EC154F54B000513C69 /* iPod Body.png */,
-				0A9154ED154F54B000513C69 /* Scroll Wheel.png */,
+				0A0A900E1563876C005E804D /* iClassic Main UI Images */,
 			);
+			name = Image;
 			path = "iPod iPhone PNGs";
 			sourceTree = "<group>";
 		};
@@ -258,6 +281,7 @@
 				ECE31CF0154F941000896711 /* Icon_iPhone_4.png */,
 			);
 			name = icons;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,6 +347,8 @@
 				9A360F0C155876AB00D95CFC /* DiamondPositionTracker.png in Resources */,
 				9A360F0D155876AB00D95CFC /* PlaybarEmpty.png in Resources */,
 				9A360F0E155876AB00D95CFC /* Playing Now.png in Resources */,
+				0A0A9019156387F1005E804D /* scroll-wheel.png in Resources */,
+				0A0A901B1563880E005E804D /* ipod-body.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
