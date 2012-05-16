@@ -20,19 +20,14 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="iPod Body.png" id="P5O-5W-BfP">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="ipod-body.png" id="P5O-5W-BfP">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Scroll Wheel.png" id="8QH-5y-DvK" customClass="ICScrollWheelView">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="scroll-wheel.png" id="8QH-5y-DvK" customClass="ICScrollWheelView">
                                 <rect key="frame" x="55" y="211" width="210" height="210"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <view contentMode="scaleToFill" id="itm-28-3bQ">
-                                <rect key="frame" x="56" y="36" width="160" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -143,26 +138,8 @@
                                             <segue destination="T9I-pJ-GmP" kind="push" id="67M-9S-BAQ"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="PcM-M3-5Yv" rowHeight="25" style="IBUITableViewCellStyleDefault" id="ccd-ar-7oy">
-                                        <rect key="frame" x="0.0" y="100" width="320" height="25"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="300" height="24"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Settings" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PcM-M3-5Yv">
-                                                    <rect key="frame" x="10" y="0.0" width="280" height="24"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="roe-db-Odo" rowHeight="25" style="IBUITableViewCellStyleDefault" id="jZJ-4P-tPb">
-                                        <rect key="frame" x="0.0" y="125" width="320" height="25"/>
+                                        <rect key="frame" x="0.0" y="100" width="320" height="25"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="300" height="24"/>
@@ -376,8 +353,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Scroll Wheel.png" width="215" height="215"/>
-        <image name="iPod Body.png" width="320" height="480"/>
+        <image name="ipod-body.png" width="320" height="480"/>
+        <image name="scroll-wheel.png" width="430" height="430"/>
     </resources>
     <classes>
         <class className="ICArtistsTableViewController" superclassName="ICTableViewController">

@@ -69,7 +69,7 @@
 		0A5C62D41552085C00E48AAA /* ICSongsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICSongsTableViewController.m; sourceTree = "<group>"; };
 		0A5C62D715526B0900E48AAA /* ICWheelGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICWheelGestureRecognizer.h; sourceTree = "<group>"; };
 		0A5C62D815526B0900E48AAA /* ICWheelGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICWheelGestureRecognizer.m; sourceTree = "<group>"; };
-		0A9154C7154F544500513C69 /* iPod Classic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iPod Classic.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A9154C7154F544500513C69 /* Retro Music.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Retro Music.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A9154CB154F544500513C69 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0A9154CD154F544500513C69 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0A9154CF154F544500513C69 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -193,7 +193,7 @@
 		0A9154C8154F544500513C69 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0A9154C7154F544500513C69 /* iPod Classic.app */,
+				0A9154C7154F544500513C69 /* Retro Music.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -301,7 +301,7 @@
 			);
 			name = "Retro Music";
 			productName = "iPod Classic";
-			productReference = 0A9154C7154F544500513C69 /* iPod Classic.app */;
+			productReference = 0A9154C7154F544500513C69 /* Retro Music.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
