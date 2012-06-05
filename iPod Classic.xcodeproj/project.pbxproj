@@ -10,7 +10,6 @@
 		0A0A9019156387F1005E804D /* scroll-wheel.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A0A9018156387F1005E804D /* scroll-wheel.png */; };
 		0A0CB3EA1554A2F2009D5924 /* ICNowPlayingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A0CB3E91554A2F1009D5924 /* ICNowPlayingView.m */; };
 		0A0CB3ED1554A30C009D5924 /* ICTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A0CB3EC1554A30C009D5924 /* ICTableView.m */; };
-		0A0CB3F21554A573009D5924 /* MPMediaItem+InformationAccessors.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A0CB3F11554A573009D5924 /* MPMediaItem+InformationAccessors.m */; };
 		0A0CB4011554D8DF009D5924 /* ICNowPlayingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A0CB4001554D8DE009D5924 /* ICNowPlayingViewController.m */; };
 		0A0CB4051554ECE4009D5924 /* ICNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A0CB4041554ECE4009D5924 /* ICNavigationController.m */; };
 		0A0CB40C15559B5D009D5924 /* ICPlaylistsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A0CB40B15559B5C009D5924 /* ICPlaylistsTableViewController.m */; };
@@ -34,7 +33,7 @@
 		0A9154EF154F54B000513C69 /* iPod Body Alternative.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A9154EA154F54B000513C69 /* iPod Body Alternative.png */; };
 		0A9154F0154F54B000513C69 /* iPod_Body.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A9154EB154F54B000513C69 /* iPod_Body.png */; };
 		0A9154F1154F54B000513C69 /* iPod Body.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A9154EC154F54B000513C69 /* iPod Body.png */; };
-		0A9154F2154F54B000513C69 /* Scroll Wheel.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A9154ED154F54B000513C69 /* Scroll Wheel.png */; };
+		0A9154F2154F54B000513C69 /* scroll-wheel3.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A9154ED154F54B000513C69 /* scroll-wheel3.png */; };
 		0A9154F8154F55F000513C69 /* ICScrollWheelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9154F7154F55F000513C69 /* ICScrollWheelView.m */; };
 		0A9154FB154F567C00513C69 /* ICTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9154FA154F567C00513C69 /* ICTableViewController.m */; };
 		0A9154FE154F71A400513C69 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A9154FD154F71A400513C69 /* MediaPlayer.framework */; };
@@ -54,8 +53,6 @@
 		0A0CB3E91554A2F1009D5924 /* ICNowPlayingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICNowPlayingView.m; sourceTree = "<group>"; };
 		0A0CB3EB1554A30C009D5924 /* ICTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICTableView.h; sourceTree = "<group>"; };
 		0A0CB3EC1554A30C009D5924 /* ICTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICTableView.m; sourceTree = "<group>"; };
-		0A0CB3F01554A573009D5924 /* MPMediaItem+InformationAccessors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MPMediaItem+InformationAccessors.h"; sourceTree = "<group>"; };
-		0A0CB3F11554A573009D5924 /* MPMediaItem+InformationAccessors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MPMediaItem+InformationAccessors.m"; sourceTree = "<group>"; };
 		0A0CB3FF1554D8DE009D5924 /* ICNowPlayingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICNowPlayingViewController.h; sourceTree = "<group>"; };
 		0A0CB4001554D8DE009D5924 /* ICNowPlayingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICNowPlayingViewController.m; sourceTree = "<group>"; };
 		0A0CB4031554ECE4009D5924 /* ICNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICNavigationController.h; sourceTree = "<group>"; };
@@ -75,7 +72,7 @@
 		0A5C62D41552085C00E48AAA /* ICSongsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICSongsTableViewController.m; sourceTree = "<group>"; };
 		0A5C62D715526B0900E48AAA /* ICWheelGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICWheelGestureRecognizer.h; sourceTree = "<group>"; };
 		0A5C62D815526B0900E48AAA /* ICWheelGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICWheelGestureRecognizer.m; sourceTree = "<group>"; };
-		0A9154C7154F544500513C69 /* Retro Music.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Retro Music.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A9154C7154F544500513C69 /* iPod Classic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iPod Classic.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A9154CB154F544500513C69 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0A9154CD154F544500513C69 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0A9154CF154F544500513C69 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -92,7 +89,7 @@
 		0A9154EA154F54B000513C69 /* iPod Body Alternative.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPod Body Alternative.png"; sourceTree = "<group>"; };
 		0A9154EB154F54B000513C69 /* iPod_Body.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPod_Body.png; sourceTree = "<group>"; };
 		0A9154EC154F54B000513C69 /* iPod Body.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPod Body.png"; sourceTree = "<group>"; };
-		0A9154ED154F54B000513C69 /* Scroll Wheel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Scroll Wheel.png"; sourceTree = "<group>"; };
+		0A9154ED154F54B000513C69 /* scroll-wheel3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scroll-wheel3.png"; sourceTree = "<group>"; };
 		0A9154F6154F55F000513C69 /* ICScrollWheelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICScrollWheelView.h; sourceTree = "<group>"; };
 		0A9154F7154F55F000513C69 /* ICScrollWheelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICScrollWheelView.m; sourceTree = "<group>"; };
 		0A9154F9154F567C00513C69 /* ICTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICTableViewController.h; sourceTree = "<group>"; };
@@ -134,7 +131,7 @@
 				0A9154E9154F54B000513C69 /* Glare Transparency Layer.png */,
 				0A9154EA154F54B000513C69 /* iPod Body Alternative.png */,
 				0A9154EC154F54B000513C69 /* iPod Body.png */,
-				0A9154ED154F54B000513C69 /* Scroll Wheel.png */,
+				0A9154ED154F54B000513C69 /* scroll-wheel3.png */,
 			);
 			name = "iClassic Main UI Images";
 			sourceTree = "<group>";
@@ -201,7 +198,7 @@
 		0A9154C8154F544500513C69 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0A9154C7154F544500513C69 /* Retro Music.app */,
+				0A9154C7154F544500513C69 /* iPod Classic.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -265,8 +262,6 @@
 				0A9154DD154F544500513C69 /* MainStoryboard.storyboard */,
 				0A0CB3EF1554A32A009D5924 /* Controllers */,
 				0A0CB3EE1554A31F009D5924 /* Views */,
-				0A0CB3F01554A573009D5924 /* MPMediaItem+InformationAccessors.h */,
-				0A0CB3F11554A573009D5924 /* MPMediaItem+InformationAccessors.m */,
 				0A5C62D715526B0900E48AAA /* ICWheelGestureRecognizer.h */,
 				0A5C62D815526B0900E48AAA /* ICWheelGestureRecognizer.m */,
 			);
@@ -296,9 +291,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0A9154C6154F544500513C69 /* Retro Music */ = {
+		0A9154C6154F544500513C69 /* iPod Classic */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0A9154E5154F544500513C69 /* Build configuration list for PBXNativeTarget "Retro Music" */;
+			buildConfigurationList = 0A9154E5154F544500513C69 /* Build configuration list for PBXNativeTarget "iPod Classic" */;
 			buildPhases = (
 				0A9154C3154F544500513C69 /* Sources */,
 				0A9154C4154F544500513C69 /* Frameworks */,
@@ -308,9 +303,9 @@
 			);
 			dependencies = (
 			);
-			name = "Retro Music";
+			name = "iPod Classic";
 			productName = "iPod Classic";
-			productReference = 0A9154C7154F544500513C69 /* Retro Music.app */;
+			productReference = 0A9154C7154F544500513C69 /* iPod Classic.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -335,7 +330,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0A9154C6154F544500513C69 /* Retro Music */,
+				0A9154C6154F544500513C69 /* iPod Classic */,
 			);
 		};
 /* End PBXProject section */
@@ -351,7 +346,7 @@
 				0A9154EF154F54B000513C69 /* iPod Body Alternative.png in Resources */,
 				0A9154F0154F54B000513C69 /* iPod_Body.png in Resources */,
 				0A9154F1154F54B000513C69 /* iPod Body.png in Resources */,
-				0A9154F2154F54B000513C69 /* Scroll Wheel.png in Resources */,
+				0A9154F2154F54B000513C69 /* scroll-wheel3.png in Resources */,
 				ECE31CF1154F941000896711 /* Icon_iPhone_4.png in Resources */,
 				9A360F0C155876AB00D95CFC /* DiamondPositionTracker.png in Resources */,
 				9A360F0D155876AB00D95CFC /* PlaybarEmpty.png in Resources */,
@@ -381,7 +376,6 @@
 				0A5C62D915526B0900E48AAA /* ICWheelGestureRecognizer.m in Sources */,
 				0A0CB3EA1554A2F2009D5924 /* ICNowPlayingView.m in Sources */,
 				0A0CB3ED1554A30C009D5924 /* ICTableView.m in Sources */,
-				0A0CB3F21554A573009D5924 /* MPMediaItem+InformationAccessors.m in Sources */,
 				0A0CB4011554D8DF009D5924 /* ICNowPlayingViewController.m in Sources */,
 				0A0CB4051554ECE4009D5924 /* ICNavigationController.m in Sources */,
 				0A0CB40C15559B5D009D5924 /* ICPlaylistsTableViewController.m in Sources */,
@@ -414,6 +408,43 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		0A43A8481564482700BD3D40 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Julian Kevin Shutzberg";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "FCE0DD1E-2731-4DC7-BE86-542C543BEA89";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Distribution;
+		};
+		0A43A8491564482700BD3D40 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Julian Kevin Shutzberg";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Julian Kevin Shutzberg";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iPod Classic/iPod Classic-Prefix.pch";
+				INFOPLIST_FILE = "iPod Classic/iPod Classic-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "4FFA12D1-EEF3-49D8-8940-E6AB353932A3";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4FFA12D1-EEF3-49D8-8940-E6AB353932A3";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Distribution;
+		};
 		0A9154E3154F544500513C69 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -495,15 +526,17 @@
 			buildConfigurations = (
 				0A9154E3154F544500513C69 /* Debug */,
 				0A9154E4154F544500513C69 /* Release */,
+				0A43A8481564482700BD3D40 /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0A9154E5154F544500513C69 /* Build configuration list for PBXNativeTarget "Retro Music" */ = {
+		0A9154E5154F544500513C69 /* Build configuration list for PBXNativeTarget "iPod Classic" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0A9154E6154F544500513C69 /* Debug */,
 				0A9154E7154F544500513C69 /* Release */,
+				0A43A8491564482700BD3D40 /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
